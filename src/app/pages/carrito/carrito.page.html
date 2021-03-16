@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar style="text-align: center;">
+    <ion-title>Productos Seleccionados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let producto of productos">
+    <ion-item >
+          <ion-img [src]="producto.imagen"></ion-img>
+      <ion-label  class="ion-text-end text-small">
+        <h2>Producto: {{producto.nombre}}</h2>
+        <h3>Precio: ${{producto.precio}}</h3>
+        <h3>Cantidad: ${{producto.cantidad}}</h3>
+          <h3>Total: ${{producto.total}}</h3>
+          <ion-button (click)="editar(producto)" slot="end">Editar</ion-button>
+          <ion-button (click)="eliminar(producto)" color="danger" slot="end">Eliminar</ion-button>
+      </ion-label>
+   </ion-item>
+  </ion-list>
+  <ion-item >
+    <ion-label class="ion-text-end text-small"><h3>Total: {{total}}</h3></ion-label>
+  </ion-item>
+<ion-button (click)="salir()" expand="block" >
+  Cerrar
+</ion-button>
+<ion-button (click)="mostarModal()" expand="block" >
+  Finalizar Compra
+</ion-button>
+</ion-content>

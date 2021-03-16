@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary" style="text-align: center;">
+    <ion-title >Detalles Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content color="mycolor2" class="ion-padding">
+ 
+ 
+
+       <ion-img [src]="producto.imagen"></ion-img>
+       <br>
+       Producto: {{producto.nombre}}
+        <br>
+        <br>
+       Descripción: {{producto.descripcion}}
+        <br>
+        <br>
+        Precio : {{producto.precio}}
+        <br>
+        <br>
+        Cantidad:<ion-button (click)="calcular('-')">-</ion-button>  {{producto.cantidad}} <ion-button (click)="calcular('+')">+</ion-button>
+        <br>
+        <br>
+        Total: {{producto.total}}
+        <br>
+        <br>
+      <ion-button (click)="salir()" color="danger">
+        <ion-icon name="close-outline" slot="start" ></ion-icon>
+          Cancelar
+        </ion-button>
+       <ion-button  (click)="continuarCompra(producto)" >
+        <ion-icon name="home-outline"slot="start"></ion-icon>
+        Seleccionar mas productos
+      </ion-button>
+      <ion-button (click)="mostarProductosSeleccionados(producto)">
+        <ion-icon name="pricetag-outline" slot="start" ></ion-icon>
+        Finalizar Comprar
+      </ion-button>
+</ion-content>

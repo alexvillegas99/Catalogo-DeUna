@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "appcatalogo-47071": {
+      "hosting": {
+        "app": [
+          "appcatalogo-47071"
+        ]
+      }
+    }
+  }
+}
