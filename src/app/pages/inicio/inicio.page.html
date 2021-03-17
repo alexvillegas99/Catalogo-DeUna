@@ -1,11 +1,20 @@
 
-<ion-toolbar >
-  
-  <ion-searchbar placeholder="Buscar..." debounce='700' [value]='textoBuscar'(ionChange)='buscar($event)' ></ion-searchbar>
+<ion-header  translucent>
+  <ion-toolbar color="primary" mode='ios'>
+    <ion-title class="ion-text-capitalize" >La Estación</ion-title>
   </ion-toolbar>
-  <ion-content class="ion-padding">
+</ion-header>
   
+ 
+  <ion-content class="ion-padding" color="dark" mode='ios'>
+  <!-- <ion-searchbar placeholder="Buscar..." debounce='700' [value]='textoBuscar'(ionChange)='buscar($event)' ></ion-searchbar>
+-->
   <app-productos [productos]='productos'></app-productos>
 
   </ion-content>
+  <ion-footer>
+    <ion-button (click)="carrito()" expand="block">
+    Productos Selecconados
+    </ion-button>
+  </ion-footer>
   

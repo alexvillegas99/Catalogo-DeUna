@@ -14,6 +14,11 @@ async guardarProducto(producto:producto){
   this.productos.push(producto);
   this.store.set('productos',this.productos);
 }
+async setear(){
+  this.productos=[];
+  this.store.set('productos',this.productos);
+
+}
 async getProductos(){
   const productos = await this.store.get('productos');
   this.productos=productos ||[];

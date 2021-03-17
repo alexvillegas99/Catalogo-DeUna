@@ -24,7 +24,7 @@ export class ModalProductoPage implements OnInit {
   ngOnInit() {
     this.producto.total = (this.producto.cantidad=0) * this.producto.precio;
   }
-  async calcular(signo) {
+  calcular(signo) {
     let valor = eval( this.producto.cantidad+ signo + 1)
     if (valor === 0) {
       this.producto.cantidad = 1;
@@ -44,14 +44,10 @@ export class ModalProductoPage implements OnInit {
   }
   async mostarProductosSeleccionados(producto:producto){
     if(producto.cantidad!==0){
-    this.dataLocal.guardarProducto(producto);
+   await this.dataLocal.guardarProducto(producto);
   }
-    this.modalCtrl.dismiss(); 
-    const modal = await this.modalCtrl.create({
-      component: CarritoPage
-    });
-    
-    return await modal.present();
+   this.modalCtrl.dismiss();
+   this.navCtrl.navigateForward('/carrito');
   }
 
 

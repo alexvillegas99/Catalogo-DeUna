@@ -1,10 +1,10 @@
 <ion-header >
-  <ion-toolbar color="primary" style="text-align: center;">
-    <ion-title>finalizar</ion-title>
+  <ion-toolbar mode='ios' color="primary" style="text-align: center;">
+    <ion-title>Finalizar Pedido</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content mode='ios' class="ion-padding">
   <ion-item>
     <ion-label>Nombre: </ion-label>
     <ion-input [(ngModel)]="nombre" type="text" ></ion-input>
@@ -30,10 +30,11 @@
     <ion-label>Comentario: </ion-label>
     <ion-input [(ngModel)]="comentario" type="text" ></ion-input>
   </ion-item>
-  <ion-button (click)="cancelar()" expand="block" >
-    Cancelar
-  </ion-button>
-  <ion-button (click)="enviar()" expand="block" >
+  <ion-button style="margin-top: 20px;" (click)="enviar()" expand="block" >
     Enviar
   </ion-button>
+  <ion-button  color="danger" (click)="cancelar()" expand="block" >
+    Regresar
+  </ion-button>
+ 
 </ion-content>

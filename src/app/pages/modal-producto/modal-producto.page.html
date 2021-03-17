@@ -1,39 +1,41 @@
 <ion-header>
-  <ion-toolbar color="primary" style="text-align: center;">
-    <ion-title >Detalles Producto</ion-title>
+  <ion-toolbar mode='ios' color="primary" style="text-align: center;">
+    <ion-title class="ion-text-capitalize" >Detalle del  producto</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="mycolor2" class="ion-padding">
+<ion-content color="dark" class="ion-padding" mode='ios'>
  
  
 
        <ion-img [src]="producto.imagen"></ion-img>
        <br>
-       Producto: {{producto.nombre}}
+    <label>   Producto: {{producto.nombre}}</label>
         <br>
         <br>
-       Descripción: {{producto.descripcion}}
+      <label> Descripción: {{producto.descripcion}}</label>
         <br>
         <br>
-        Precio : {{producto.precio}}
+      <label>   Precio : {{producto.precio}}</label>
         <br>
         <br>
-        Cantidad:<ion-button (click)="calcular('-')">-</ion-button>  {{producto.cantidad}} <ion-button (click)="calcular('+')">+</ion-button>
+        Cantidad:<ion-button (click)="calcular('-')">-</ion-button> <label> {{producto.cantidad}} </label> <ion-button (click)="calcular('+')">+</ion-button>
         <br>
         <br>
-        Total: {{producto.total}}
+        <label >Total: {{producto.total}}</label>
         <br>
         <br>
-      <ion-button (click)="salir()" color="danger">
+    
+       <ion-button  expand="block"   (click)="continuarCompra(producto)" >
+        <ion-icon name="albums-outline" slot="start"></ion-icon>
+        Agregar más productos
+      </ion-button>
+      <ion-button  expand="block"  (click)="mostarProductosSeleccionados(producto)">
+        <ion-icon name="cart-outline" slot="start"> </ion-icon>
+        Ver carrito
+      </ion-button>
+      <ion-button  expand="block"  (click)="salir()" color="danger">
         <ion-icon name="close-outline" slot="start" ></ion-icon>
           Cancelar
         </ion-button>
-       <ion-button  (click)="continuarCompra(producto)" >
-        <ion-icon name="home-outline"slot="start"></ion-icon>
-        Seleccionar mas productos
-      </ion-button>
-      <ion-button (click)="mostarProductosSeleccionados(producto)">
-        <ion-icon name="pricetag-outline" slot="start" ></ion-icon>
-        Finalizar Comprar
-      </ion-button>
 </ion-content>
+

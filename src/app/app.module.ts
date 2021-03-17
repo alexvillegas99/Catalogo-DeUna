@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -21,7 +22,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ComponentsModule,
-    IonicStorageModule.forRoot()],
+    IonicStorageModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [InAppBrowser,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

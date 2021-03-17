@@ -1,35 +1,37 @@
 <ion-header>
-  <ion-toolbar color="primary" style="text-align: center;">
-    <ion-title >Editar</ion-title>
+  <ion-toolbar color="primary" mode='ios' style="text-align: center;">
+    <ion-title>Editar</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="mycolor2" class="ion-padding">
- 
- 
+<ion-content color="dark" mode='ios' class="ion-padding">
+
+
 
   <ion-img [src]="producto.imagen"></ion-img>
   <br>
-  Producto: {{producto.nombre}}
-   <br>
-   <br>
-  Descripción: {{producto.descripcion}}
-   <br>
-   <br>
-   Precio : {{producto.precio}}
-   <br>
-   <br>
-   Cantidad:<ion-button (click)="calcular('-')">-</ion-button>  {{producto.cantidad}} <ion-button (click)="calcular('+')">+</ion-button>
-   <br>
-   <br>
-   Total: {{producto.total}}
-   <br>
-   <br>
- <ion-button (click)="salir()" color="danger">
-   <ion-icon name="close-outline" slot="start" ></ion-icon>
-     Cancelar
-   </ion-button>
-  <ion-button  (click)="continuarCompra(producto)" >
-   <ion-icon name="home-outline"slot="start"></ion-icon>
-   Continuar
- </ion-button>
+  <label> Producto: {{producto.nombre}}</label>
+  <br>
+  <br>
+  <label> Descripción: {{producto.descripcion}}</label>
+  <br>
+  <br>
+  <label> Precio : {{producto.precio}}</label>
+  <br>
+  <br>
+  Cantidad:<ion-button (click)="calcular('-')">-</ion-button> <label> {{producto.cantidad}}</label>
+  <ion-button (click)="calcular('+')">+</ion-button>
+  <br>
+  <br>
+  <label>Total: {{producto.total}}</label>
+  <br>
+  <br>
+  <ion-button expand="block" (click)="continuarCompra(producto)">
+    <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+    Continuar
+  </ion-button>
+  <ion-button expand="block" (click)="salir()" color="danger">
+    <ion-icon name="close-outline" slot="start"></ion-icon>
+    Cancelar
+  </ion-button>
+  
 </ion-content>
