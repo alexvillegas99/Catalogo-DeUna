@@ -4,5 +4,6 @@ export interface producto{
     imagen:string,
     precio:number,
     total:number,
-    cantidad:number
+    cantidad:number,
+    categoria:string
 }

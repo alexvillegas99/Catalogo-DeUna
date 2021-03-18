@@ -1,21 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { producto } from '../interfaces/producto';
+import { categoria } from '../interfaces/categoria';
 import { map } from 'rxjs/operators';
-
 @Injectable({
   providedIn: 'root'
 })
-export class CrudProductosService {
+export class CrudCategoriasService {
 
-  
-  private  ProductosCollection:AngularFirestoreCollection<producto>;
-  private Productos:Observable<producto[]>;
+  private  CategoriaCollection:AngularFirestoreCollection<categoria>;
+  private categoria:Observable<categoria[]>;
   constructor(private db:AngularFirestore) {
 
-    this.ProductosCollection=db.collection<producto>('Productos');
-    this.Productos = this.ProductosCollection.snapshotChanges().pipe(map(
+    this.CategoriaCollection=db.collection<categoria>('categorias');
+    this.categoria = this.CategoriaCollection.snapshotChanges().pipe(map(
       actions=>{
         return actions.map(a=>{
           const data=a.payload.doc.data();
@@ -26,7 +24,7 @@ export class CrudProductosService {
     ))
 
    }
-  getProductos(){
-return this.Productos;
+  getCategorias(){
+return this.categoria;
   }
 }

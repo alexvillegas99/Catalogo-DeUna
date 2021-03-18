@@ -15,6 +15,7 @@ import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { PipesModule } from './pipes/pipes.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,6 +23,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     ComponentsModule,
+    PipesModule,
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [InAppBrowser,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
