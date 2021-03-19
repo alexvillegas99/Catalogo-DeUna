@@ -7,23 +7,27 @@
   
  
   <ion-content color="dark"  mode='ios'>
-  <app-encabezado  ></app-encabezado>
-   <ion-searchbar placeholder="Buscar..." debounce='700' [value]='textoBuscar'(ionChange)='buscar($event)' ></ion-searchbar>
+  <app-encabezado></app-encabezado>
+   <ion-searchbar placeholder="Buscar..."  debounce='700'  
+   inputmode="text" (ionChange)='buscar($event)' ></ion-searchbar>
  <!-- <app-productos [productos]='productos'></app-productos>-->
  <!-- Segmento Categorias y todo-->
- <ion-segment scrollable mode="md" color="primary" value="business"
+ <ion-segment scrollable mode="md" *ngIf="!busqueda" color="primary" style="width: 100%;" value="Categorias"  
     (ionChange)="CambioTipo($event)">
-    <ion-segment-button mode="md" value="Opcion" *ngFor="let tipo of tipos" [value]='tipo'>
+    <ion-segment-button mode="md" value="Opcion"style="width: 50%;" *ngFor="let tipo of tipos" [value]='tipo'>
       <ion-label text-capitalize color="primary">{{tipo}}</ion-label>
     </ion-segment-button>
   </ion-segment>
    <!-- Categorias-->
-   <app-categorias *ngIf="cambiar" [Productos]='productos' [Categorias]='Categorias'></app-categorias>
-   <app-productos *ngIf="!cambiar"  [productos]='productos'></app-productos>
+   <app-categorias *ngIf="cambiar && !busqueda" [Productos]='productos' [Categorias]='Categorias'></app-categorias>
+   <app-productos *ngIf="!cambiar && !busqueda"  [productos]='productos'></app-productos>
+   <app-productos *ngIf="busqueda"  [productos]='productosFiltrados'></app-productos>
+   <ion-label color="danger" style="text-align: center;"><h1>{{mensaje}}</h1></ion-label>
     <!-- Categorias-->
   </ion-content>
   <ion-footer>
     <ion-button (click)="carrito()" expand="block">
+      <ion-icon name="cart-outline" slot="start"> </ion-icon>
     Productos Selecconados
     </ion-button>
   </ion-footer>

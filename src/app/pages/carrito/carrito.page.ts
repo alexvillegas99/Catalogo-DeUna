@@ -35,7 +35,7 @@ export class CarritoPage implements OnInit {
     })
   }
   salir() {
-    this.navCtrl.navigateForward('inicio');
+    this.modalCtrl.dismiss();
 
   }
   async mostarModal() {   

@@ -3,35 +3,32 @@
     <ion-title class="ion-text-capitalize" >Detalle del  producto</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="dark" class="ion-padding" mode='ios'>
- 
- 
+<ion-content color="dark" class="ion-padding"  mode='ios'>
 
-       <ion-img [src]="producto.imagen"></ion-img>
-       <br>
-    <label>   Producto: {{producto.nombre}}</label>
-        <br>
-        <br>
-      <label> Descripción: {{producto.descripcion}}</label>
-        <br>
-        <br>
-      <label>   Precio : {{producto.precio}}</label>
-        <br>
-        <br>
-        Cantidad:<ion-button (click)="calcular('-')">-</ion-button> <label> {{producto.cantidad}} </label> <ion-button (click)="calcular('+')">+</ion-button>
-        <br>
-        <br>
-        <label >Total: {{producto.total}}</label>
-        <br>
-        <br>
-    
+       <ion-img  [src]="producto.imagen"></ion-img>
+       
+       <ion-item>
+        <label>   Producto: {{producto.nombre}}</label>
+       </ion-item>
+  
+        <ion-item>
+          <label> Descripción: {{producto.descripcion}}</label>
+        </ion-item>
+        <ion-item>
+          <label>   Precio : {{producto.precio}}</label>
+        </ion-item>
+        <ion-item>
+          Cantidad:<ion-button (click)="calcular(' -')"> <ion-icon name="remove-outline"  slot="icon-only"></ion-icon> </ion-button> <label>  {{producto.cantidad}}  </label> <ion-button (click)="calcular('+')"> <ion-icon name="add-outline"  slot="icon-only"></ion-icon></ion-button>
+       
+        </ion-item>
+        <ion-item>
+          <label >Total: {{producto.total}}</label>
+        </ion-item>
+    <br>
+    <br>
        <ion-button  expand="block"   (click)="continuarCompra(producto)" >
-        <ion-icon name="albums-outline" slot="start"></ion-icon>
-        Agregar más productos
-      </ion-button>
-      <ion-button  expand="block"  (click)="mostarProductosSeleccionados(producto)">
         <ion-icon name="cart-outline" slot="start"> </ion-icon>
-        Ver carrito
+        Agregar producto
       </ion-button>
       <ion-button  expand="block"  (click)="salir()" color="danger">
         <ion-icon name="close-outline" slot="start" ></ion-icon>

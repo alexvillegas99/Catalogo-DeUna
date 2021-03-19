@@ -17,7 +17,10 @@ export class InicioPage implements OnInit {
   @ViewChild(IonSegment) segment:IonSegment;
 tipos=['Categorias','Todo'];
 cambiar=true;
+busqueda=false;
+productosFiltrados:producto[]=[];
 Categorias:categoria[]=[];
+mensaje='';
   constructor( private crudService:CrudProductosService,
                 private modalCtrl:ModalController,
                 private navCtrl:NavController,
@@ -44,18 +47,38 @@ Categorias:categoria[]=[];
 
   }
   
-  buscar(event){
-   console.log(this.Categorias);
-   console.log(this.productos);
+  buscar(ev){
+    this.textoBuscar=ev.detail.value
+    
+  if(this.textoBuscar.length==0){
+this.busqueda=false;
+  }else{
+    this.busqueda=true;
+    
   }
+ 
+  this.productosFiltrados = [];
+  let longitud:number = this.textoBuscar.length;
+    this.productos.forEach(producto=>{
+      if( this.textoBuscar.toLocaleLowerCase()===producto.nombre.substring(0,longitud).toLocaleLowerCase()){
+        this.productosFiltrados.push(producto);
+      }
+    })
+  
+    if(this.productosFiltrados.length==0){
+      this.mensaje='No se encontraron coincidencias'
+    }else{
+      this.mensaje=''
+    }
+  }
+  
   async carrito(){
-  /*  const modal = await this.modalCtrl.create({
+   const modal = await this.modalCtrl.create({
       component: CarritoPage
     });
     
     return await modal.present();
-    */
-   this.navCtrl.navigateForward('/carrito');
+   
   }
   CambioTipo(event){
       if(event.detail.value=='Categorias'){

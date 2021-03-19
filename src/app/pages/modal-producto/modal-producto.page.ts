@@ -42,13 +42,5 @@ export class ModalProductoPage implements OnInit {
     }
     this.modalCtrl.dismiss(); 
   }
-  async mostarProductosSeleccionados(producto:producto){
-    if(producto.cantidad!==0){
-   await this.dataLocal.guardarProducto(producto);
-  }
-   this.modalCtrl.dismiss();
-   this.navCtrl.navigateForward('/carrito');
-  }
-
 
 }

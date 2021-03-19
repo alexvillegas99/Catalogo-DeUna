@@ -1,4 +1,4 @@
-<ion-label style="margin-left: 10px;"><h1>{{Categoria.nombre}}</h1></ion-label>
+<ion-label><span><h1>{{Categoria.nombre}}</h1></span></ion-label>
 <ion-slides [options]="slideOpts" >
   <ion-slide *ngFor="let producto of Productos | filtro:categoria:Categoria.nombre ">
    <ion-card mode="md" (click)="mostrarModal(producto)">

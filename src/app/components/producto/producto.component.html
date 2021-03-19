@@ -1,17 +1,3 @@
-<ion-card color="dark" mode='ios' >
-  <ion-card-header  >
-    <label ><h3 style="color: #f2ff38;">{{producto.nombre}}</h3></label>
-  </ion-card-header>
+<ion-card color="dark" mode='ios'(click)="mostrarModal(producto)" >
   <ion-img [src]="producto.imagen"></ion-img>
-  <ion-item color="dark" mode='ios'>
-    <ion-label>Precio: ${{producto.precio}}</ion-label>
-   
-  </ion-item>
-
-  <ion-card-content>
-    {{producto.descripcion}}
-    <br>
-    <ion-button   expand="block" (click)="mostrarModal(producto)">Comprar</ion-button>
-  </ion-card-content>
-  
 </ion-card>
