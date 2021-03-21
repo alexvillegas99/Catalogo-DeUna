@@ -1,11 +1,11 @@
-<ion-content>
-<ion-grid fixed>
-  <ion-row>
-    <ion-col size="6" *ngFor="let producto of Productos | filtro:categoria:Categoria ">   
-   <ion-card mode="md" (click)="mostrarModal(producto)">
-     <ion-img [src]="producto.imagen"></ion-img>
-   </ion-card>
-   </ion-col>
-</ion-row>
-</ion-grid>
-</ion-content>
+
+<ion-list *ngFor="let producto of Productos  | filtro:categoria:Categoria" color="dark">
+  <ion-item color="dark"  (click)="mostrarModal(producto)">
+        <ion-img [src]="producto.imagen"></ion-img>
+    <ion-label  class="ion-text-end text-small">
+      <h2>Producto: {{producto.nombre}}</h2>
+      <h3>Descripción: {{producto.descripcion}}</h3>
+      <h3>Precio: ${{producto.precio}}</h3>
+    </ion-label>
+ </ion-item>
+</ion-list>

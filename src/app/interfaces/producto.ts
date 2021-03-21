@@ -5,5 +5,6 @@ export interface producto{
     precio:number,
     total:number,
     cantidad:number,
-    categoria:string
+    categoria:string,
+    estado:boolean
 }

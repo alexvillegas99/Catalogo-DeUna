@@ -20,7 +20,7 @@ cambiar=true;
 busqueda=false;
 productosFiltrados:producto[]=[];
 Categorias:categoria[]=[];
-mensaje='';
+mensaje=''; 
   constructor( private crudService:CrudProductosService,
                 private modalCtrl:ModalController,
                 private navCtrl:NavController,
@@ -41,10 +41,7 @@ mensaje='';
     await this.CategoriasService.getCategorias().subscribe(res=>{
       this.Categorias = res;
     }) ;
-    this.llenarCategorias();
-  }
-  async llenarCategorias(){
-
+   
   }
   
   buscar(ev){

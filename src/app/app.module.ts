@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 //
 
 import { AngularFirestoreModule } from "@angular/fire/firestore"; //Modulo Firestore (BD)
+import { AngularFireAuthModule } from "@angular/fire/auth";  //Modulo de authenticacion
 import { AngularFireModule } from "@angular/fire";            //Modulo para inicializar y que todo funcione
 import { environment } from 'src/environments/environment';
 import { ComponentsModule } from './components/components.module';
@@ -22,6 +23,7 @@ import { PipesModule } from './pipes/pipes.module';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireAuthModule,
     ComponentsModule,
     PipesModule,
     IonicStorageModule.forRoot(),

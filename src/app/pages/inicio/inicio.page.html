@@ -17,7 +17,7 @@
     <ion-segment-button mode="md" value="Opcion"style="width: 50%;" *ngFor="let tipo of tipos" [value]='tipo'>
       <ion-label text-capitalize color="primary">{{tipo}}</ion-label>
     </ion-segment-button>
-  </ion-segment>
+  </ion-segment> 
    <!-- Categorias-->
    <app-categorias *ngIf="cambiar && !busqueda" [Productos]='productos' [Categorias]='Categorias'></app-categorias>
    <app-productos *ngIf="!cambiar && !busqueda"  [productos]='productos'></app-productos>
