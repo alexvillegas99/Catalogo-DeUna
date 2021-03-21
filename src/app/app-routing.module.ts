@@ -28,6 +28,14 @@ const routes: Routes = [
     path: 'modal-producto',
     loadChildren: () => import('./pages/modal-producto/modal-producto.module').then( m => m.ModalProductoPageModule)
   },
+  {
+    path: 'productos-categoria/:categoria',
+    loadChildren: () => import('./pages/productos-categoria/productos-categoria.module').then( m => m.ProductosCategoriaPageModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./pages/admin/admin.module').then( m => m.AdminPageModule)
+  },
 ];
 
 @NgModule({

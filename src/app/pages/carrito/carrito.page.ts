@@ -15,35 +15,27 @@ export class CarritoPage implements OnInit {
   productos: producto[] = [];
   constructor(private modalCtrl: ModalController,
     private dataLocal: DataLocalService,
-    private navCtrl:NavController) { }
+    private navCtrl: NavController) { }
   total = 0;
   ngOnInit() {
     this.cargarProductos();
-    
+
   }
-  async calculaTotal(){
+  async calculaTotal() {
     this.productos = await this.dataLocal.getProductos();
     this.productos.forEach(producto => {
       this.total += producto.total;
     })
   }
   async cargarProductos() {
-    this.total=0;
+    this.total = 0;
     this.productos = await this.dataLocal.getProductos();
     this.productos.forEach(producto => {
       this.total += producto.total;
     })
   }
-  salir() {
-    this.modalCtrl.dismiss();
 
-  }
-  async mostarModal() {   
-    const modal = await this.modalCtrl.create({
-      component: FinalizarPage
-    });
-    return await modal.present();
-  }
+
   async editar(producto: producto) {
     const modal = await this.modalCtrl.create({
       component: EditarPage,
@@ -53,9 +45,9 @@ export class CarritoPage implements OnInit {
     });
     return await modal.present();
   }
-  async eliminar(producto:producto){
-await this.dataLocal.delete(producto);
-this.cargarProductos();
+  async eliminar(producto: producto) {
+    await this.dataLocal.delete(producto);
+    this.cargarProductos();
   }
 
 }

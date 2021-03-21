@@ -14,11 +14,7 @@ export class CategoriaComponent implements OnInit {
   @Input() Productos:producto[]=[];
   @Input() Categoria:categoria;
     constructor(private modalCtrl:ModalController) { }
-  
-    slideOpts={
-      slidesPerView:3.2,
-    freeMode:true
-    };    
+     
     ngOnInit() {
     }
     async mostrarModal(producto:producto) {

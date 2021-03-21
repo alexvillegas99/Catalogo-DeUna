@@ -11,7 +11,7 @@ import { CategoriaComponent } from './categoria/categoria.component';
 
 @NgModule({
   declarations: [ProductoComponent,ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent],
-  exports: [ProductoComponent,ProductosComponent,EncabezadoComponent,CategoriasComponent],
+  exports: [ProductoComponent,ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent],
   imports: [
     CommonModule,PipesModule
   ]
