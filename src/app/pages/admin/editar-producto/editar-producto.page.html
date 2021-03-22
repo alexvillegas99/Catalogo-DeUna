@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar mode='ios'>
+    <ion-title>Editar </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Nombre: </ion-label>
+    <ion-input [(ngModel)]="Producto.nombre" type="text" placeholder="Nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Descripción: </ion-label>
+    <ion-input [(ngModel)]="Producto.descripcion" type="text" placeholder="http://imagen"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Imagen: </ion-label>
+    <ion-input [(ngModel)]="Producto.imagen" type="text" placeholder="Nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: </ion-label>
+    <ion-input [(ngModel)]="Producto.precio" type="text" placeholder="http://imagen"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoria: </ion-label>
+  
+  </ion-item>
+  <ion-item>
+    <ion-label>Estado: </ion-label>
+ 
+  </ion-item>
+  <ion-button (click)="editar()" expand="block" >
+    Editar
+  </ion-button>
+</ion-content>

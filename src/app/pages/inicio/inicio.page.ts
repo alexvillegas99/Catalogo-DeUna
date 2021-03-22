@@ -29,7 +29,6 @@ mensaje='';
   textoBuscar='';
   productos:producto[]=[];
   ngOnInit() {
-    this.dataLocal.setear();
     this.crudService.getProductos().subscribe(res=>{
       this.productos = res;
     }) ;

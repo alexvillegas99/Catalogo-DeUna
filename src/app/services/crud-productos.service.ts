@@ -29,4 +29,17 @@ export class CrudProductosService {
   getProductos(){
 return this.Productos;
   }
+  inserProducto(producto: producto) {
+    return this.ProductosCollection.add(producto);
+
+  }
+  deleteProducto(id: string){
+    return this.ProductosCollection.doc(id).delete();
+  }
+  updateProducto(producto:producto, id: string){
+    return this.ProductosCollection.doc(id).update(producto);
+  }
+  getProducto(id: string){
+    return this.ProductosCollection.doc<producto>(id).valueChanges();
+  }
 }

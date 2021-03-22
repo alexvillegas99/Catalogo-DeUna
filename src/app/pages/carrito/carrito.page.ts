@@ -13,26 +13,37 @@ import { EditarPage } from '../editar/editar.page';
 export class CarritoPage implements OnInit {
 
   productos: producto[] = [];
+  finalizar=false;
   constructor(private modalCtrl: ModalController,
     private dataLocal: DataLocalService,
     private navCtrl: NavController) { }
   total = 0;
   ngOnInit() {
     this.cargarProductos();
+    setInterval(() => {
+  this.calculaTotal();
+}, 1000);
 
   }
   async calculaTotal() {
-    this.productos = await this.dataLocal.getProductos();
+    let total=0;
     this.productos.forEach(producto => {
-      this.total += producto.total;
+      total += producto.total;
     })
+    this.total=total;
   }
   async cargarProductos() {
-    this.total = 0;
+    let total = 0;
     this.productos = await this.dataLocal.getProductos();
     this.productos.forEach(producto => {
-      this.total += producto.total;
+      total += producto.total;
     })
+    this.total=total;
+    if(this.productos.length===0){
+      this.finalizar=false;
+    }else{
+      this.finalizar=true;
+    }
   }
 
 

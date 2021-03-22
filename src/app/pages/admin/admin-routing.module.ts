@@ -17,6 +17,22 @@ const routes: Routes = [
   {
     path: 'listado-categoria/:categoria',
     loadChildren: () => import('./listado-categoria/listado-categoria.module').then( m => m.ListadoCategoriaPageModule)
+  },
+  {
+    path: 'agregar-categoria',
+    loadChildren: () => import('./agregar-categoria/agregar-categoria.module').then( m => m.AgregarCategoriaPageModule)
+  },
+  {
+    path: 'agregar-producto',
+    loadChildren: () => import('./agregar-producto/agregar-producto.module').then( m => m.AgregarProductoPageModule)
+  },
+  {
+    path: 'editar-categoria/:id',
+    loadChildren: () => import('./editar-categoria/editar-categoria.module').then( m => m.EditarCategoriaPageModule)
+  },
+  {
+    path: 'editar-producto/:id',
+    loadChildren: () => import('./editar-producto/editar-producto.module').then( m => m.EditarProductoPageModule)
   }
 ];
 

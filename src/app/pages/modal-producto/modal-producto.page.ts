@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, ToastController } from '@ionic/angular';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
 import { CarritoPage } from '../carrito/carrito.page';
@@ -19,7 +19,8 @@ export class ModalProductoPage implements OnInit {
   total=0;
   constructor(private navCtrl: NavController,
     private modalCtrl: ModalController,
-    private dataLocal: DataLocalService) { }
+    private dataLocal: DataLocalService,
+    private toas:ToastController) { }
  
   ngOnInit() {
     this.producto.total = (this.producto.cantidad=0) * this.producto.precio;
@@ -36,11 +37,17 @@ export class ModalProductoPage implements OnInit {
   salir() {
     this.modalCtrl.dismiss();
   }
-  continuarCompra(producto:producto){
+  async continuarCompra(producto:producto){
     if(producto.cantidad!==0){
     this.dataLocal.guardarProducto(producto);
     }
+    const toast = await this.toas.create({
+      message: `${producto.nombre} añadido al carrito.`,
+      duration: 2000
+    });
+    toast.present();
     this.modalCtrl.dismiss(); 
+    
   }
 
 }

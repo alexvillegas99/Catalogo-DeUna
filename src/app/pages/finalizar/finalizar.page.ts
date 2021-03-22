@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -15,7 +15,8 @@ export class FinalizarPage implements OnInit {
   constructor( private iab: InAppBrowser,
     private dataLocal: DataLocalService,
     private alertCtrl:AlertController,
-    private modalCtrl:ModalController) { }
+    private modalCtrl:ModalController,
+    private navCtrl:NavController) { }
   numero = '593996130636'
   
   //
@@ -57,9 +58,12 @@ async enviar(){
   texto += '    *Referencia Dirección*: ' + this.referencia;
   texto += '    *Comentario* ' + this.comentario;
   texto += '    *Artículos* ' ;
-  texto+=this.strinProductos
+  texto+=this.strinProductos;
+  texto += ' *Para un mejor servicio, porfavor envianos tu ubicación* '
   let url = 'https://wa.me/' + this.numero + '?text=' + texto;
   const browser = this.iab.create(url,'_system');
+  this.dataLocal.setear();
+  this.navCtrl.navigateForward('/inicio')
 }else{
   const alert = await this.alertCtrl.create({
     cssClass: 'my-custom-class',

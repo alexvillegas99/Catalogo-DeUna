@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { NavController, ModalController } from '@ionic/angular';
+import { NavController, ModalController, AlertController } from '@ionic/angular';
 import { CrudProductosService } from '../../../services/crud-productos.service';
 import { DataLocalService } from '../../../services/data-local.service';
 import { CrudCategoriasService } from '../../../services/crud-categorias.service';
@@ -19,7 +19,9 @@ export class AdministracionPage implements OnInit {
     private crudService: CrudProductosService,
     private modalCtrl: ModalController,
     private dataLocal: DataLocalService,
-    private CategoriasService: CrudCategoriasService) { }
+    private CategoriasService: CrudCategoriasService,
+    private alertCtrl:AlertController,
+    private ProductosServices:CrudProductosService) { }
   tipos = ['Categorias', 'Todo'];
   cambiar = true;
   productos: producto[] = [];
@@ -38,6 +40,60 @@ export class AdministracionPage implements OnInit {
     await this.CategoriasService.getCategorias().subscribe(res => {
       this.Categorias = res;
     });
+    
+  }
+  async editarProducto(id:string){
+    this.navCtrl.navigateForward(`admin/editar-producto/${id}`);
+  }
+  async eliminarProducto(id:string){
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Advertencia',
+      message: '<strong>Desea eliminar el producto ?</strong>',
+      buttons: [
+        {
+          text: 'Cancerlar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            this.ProductosServices.deleteProducto(id);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  async editarCategoria(id:string){
+    this.navCtrl.navigateForward(`admin/editar-categoria/${id}`);
+  }
+  async eliminarCategoria(id:string){
+    const alert = await this.alertCtrl.create({
+      cssClass: 'my-custom-class',
+      header: 'Advertencia',
+      message: '<strong>Desea eliminar la categoria ?</strong>',
+      buttons: [
+        {
+          text: 'Cancerlar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'Aceptar',
+          handler: () => {
+            this.CategoriasService.deleteCategoria(id);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+   
   }
   cerrarSesion() {
     this.AuthService.logout();
@@ -52,7 +108,6 @@ export class AdministracionPage implements OnInit {
   }
   buscar(ev) {
     this.textoBuscar = ev.detail.value
-
     if (this.textoBuscar.length == 0) {
       this.busqueda = false;
     } else {
