@@ -23,12 +23,18 @@
   </ion-item>
   <ion-item>
     <ion-label>Categoria: </ion-label>
-  
+    <ion-select placeholder="Categoria" [(ngModel)]="Producto.categoria" >
+      <ion-select-option *ngFor="let categoria of Categorias">{{categoria.nombre}}</ion-select-option>
+    </ion-select>
   </ion-item>
   <ion-item>
-    <ion-label>Estado: </ion-label>
- 
+ <!--   <ion-label>Estado: </ion-label>
+    <ion-select placeholder="Estado" value='Producto.estado'>
+      <ion-select-option value="Activo">Activo</ion-select-option>
+      <ion-select-option value="Inactivo">Inactivo</ion-select-option>
+    </ion-select>
   </ion-item>
+-->
   <ion-button (click)="editar()" expand="block" >
     Editar
   </ion-button>

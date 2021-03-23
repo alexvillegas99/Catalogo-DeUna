@@ -1,9 +1,41 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>agregarProducto</ion-title>
+  <ion-toolbar mode='ios' color="primary">
+    <ion-title>Agregar Producto </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label>Nombre: </ion-label>
+    <ion-input [(ngModel)]="Producto.nombre" type="text" placeholder="Nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Descripción: </ion-label>
+    <ion-input [(ngModel)]="Producto.descripcion" type="text" placeholder="Descripción"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Imagen: </ion-label>
+    <ion-input [(ngModel)]="Producto.imagen" type="text" placeholder="http://imagen"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: </ion-label>
+    <ion-input [(ngModel)]="Producto.precio" type="text" placeholder=""></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Categoria: </ion-label>
+    <ion-select placeholder="Categoria" [(ngModel)]="Producto.categoria" >
+      <ion-select-option *ngFor="let categoria of Categorias">{{categoria.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+ <!--<ion-item>
+    <ion-label>Estado: </ion-label>
+    <ion-select placeholder="Estado" value='Producto.estado'>
+      <ion-select-option value="Activo">Activo</ion-select-option>
+      <ion-select-option value="Inactivo">Inactivo</ion-select-option>
+    </ion-select>
+  </ion-item>
+  --> 
+  <ion-button (click)="agregar()" expand="block" >
+    Agregar
+  </ion-button>
 </ion-content>

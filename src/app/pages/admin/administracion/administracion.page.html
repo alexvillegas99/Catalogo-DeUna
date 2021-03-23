@@ -42,8 +42,8 @@
   <!--Fin categorias-->
   <!--Todo-->
   <div *ngIf="!cambiar && !busqueda">
-    <ion-button expand="block">
-      Añadir Producto
+    <ion-button expand="block" routerLink='../agregar-producto'>
+      Agregar Producto
     </ion-button>
     <ion-list *ngFor="let producto of productos " color="dark">
       <ion-item color="dark">

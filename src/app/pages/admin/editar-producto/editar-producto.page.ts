@@ -4,6 +4,7 @@ import { CrudProductosService } from '../../../services/crud-productos.service';
 import { NavController } from '@ionic/angular';
 import { producto } from '../../../interfaces/producto';
 import { categoria } from '../../../interfaces/categoria';
+import { CrudCategoriasService } from '../../../services/crud-categorias.service';
 
 @Component({
   selector: 'app-editar-producto',
@@ -21,15 +22,24 @@ Producto:producto={
   categoria:'',
   estado:true
 }
+Categorias:categoria[]=[];
   constructor(private ruta: ActivatedRoute,
     private ProductosService:CrudProductosService,
-    private navCtrl:NavController) { }
+    private navCtrl:NavController,
+    private CategoriasService:CrudCategoriasService) { }
 id='';
+async cargarCategorias(){
+  await this.CategoriasService.getCategorias().subscribe(res=>{
+    this.Categorias = res;
+  }) ;
+ 
+}
 ngOnInit() {
 this.id=this.ruta.snapshot.params.id;
-this.cargarCatgoria(this.id);
+this.cargarProducto(this.id);
+this.cargarCategorias();
 }
-async cargarCatgoria(id){
+async cargarProducto(id){
 await this.ProductosService.getProducto(id).subscribe(res=>{
 this.Producto = res;
 }) ;
