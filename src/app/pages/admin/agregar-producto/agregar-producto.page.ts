@@ -15,6 +15,7 @@ export class AgregarProductoPage implements OnInit {
 
   Producto:producto={
     nombre:'',
+    id:'',
     descripcion:'',
     imagen:'',
     precio:0,

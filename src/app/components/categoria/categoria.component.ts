@@ -12,7 +12,8 @@ import { ModalProductoPage } from '../../pages/modal-producto/modal-producto.pag
 export class CategoriaComponent implements OnInit {
 
   @Input() Productos:producto[]=[];
-  @Input() Categoria:categoria;
+  @Input() Categoria:string;
+  ca:string='';
     constructor(private modalCtrl:ModalController) { }
      
     ngOnInit() {

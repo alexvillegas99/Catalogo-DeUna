@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebaseConfig : {
-    apiKey: "AIzaSyDcOsUehjOmldOcCM7tFero4HtxKsyDYjQ",
-    authDomain: "appcatalogo-47071.firebaseapp.com",
-    projectId: "appcatalogo-47071",
-    storageBucket: "appcatalogo-47071.appspot.com",
-    messagingSenderId: "578045070024",
-    appId: "1:578045070024:web:8570acbd9662b85a6a33fd"
+    apiKey: "AIzaSyD8dh8xTRdZ2Vo7CXOXHAjYJldf7pEtWfM",
+    authDomain: "laestacionambato-12215.firebaseapp.com",
+    projectId: "laestacionambato-12215",
+    storageBucket: "laestacionambato-12215.appspot.com",
+    messagingSenderId: "183562752865",
+    appId: "1:183562752865:web:931c5bc8b24939b2176b20"
   }
 };

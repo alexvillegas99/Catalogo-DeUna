@@ -11,6 +11,7 @@ import { NavController } from '@ionic/angular';
 })
 export class EditarCategoriaPage implements OnInit {
   Categoria:categoria={
+    id:'',
     nombre:'',
     imagen:''
   };

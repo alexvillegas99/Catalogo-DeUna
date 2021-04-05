@@ -1,5 +1,5 @@
 
-<ion-list *ngFor="let producto of Productos  | filtro:categoria:Categoria" color="dark">
+<ion-list *ngFor="let producto of Productos  | filtro:ca:Categoria" color="dark">
   <ion-item color="dark"  (click)="mostrarModal(producto)">
         <ion-img [src]="producto.imagen"></ion-img>
     <ion-label  class="ion-text-end text-small">

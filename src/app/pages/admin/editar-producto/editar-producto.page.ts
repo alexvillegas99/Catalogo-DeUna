@@ -14,6 +14,7 @@ import { CrudCategoriasService } from '../../../services/crud-categorias.service
 export class EditarProductoPage implements OnInit {
 Producto:producto={
   nombre:'',
+  id:'',
   descripcion:'',
   imagen:'',
   precio:0,

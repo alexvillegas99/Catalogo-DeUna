@@ -10,6 +10,7 @@ import { categoria } from '../../../interfaces/categoria';
 })
 export class AgregarCategoriaPage implements OnInit {
 Categoria?:categoria={
+  id:'',
   nombre:'',
   imagen:''
 }
