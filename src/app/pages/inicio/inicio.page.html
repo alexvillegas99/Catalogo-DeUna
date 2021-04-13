@@ -1,13 +1,13 @@
 
 <ion-header  translucent>
   <ion-toolbar color="primary" mode='ios'>
-    <ion-title class="ion-text-capitalize" >La Estación</ion-title>
+    <ion-title class="ion-text-capitalize" >La Estación Tapas & Vinos</ion-title>
   </ion-toolbar>
 </ion-header>
   
  
   <ion-content color="dark"  mode='ios'>
-  <app-encabezado></app-encabezado>
+  <app-encabezado [routerLink]="['/menu']" routerLinkActive="router-link-active" ></app-encabezado>
    <ion-searchbar placeholder="Buscar..."  debounce='700'  
    inputmode="text" (ionChange)='buscar($event)' ></ion-searchbar>
  <!-- <app-productos [productos]='productos'></app-productos>-->

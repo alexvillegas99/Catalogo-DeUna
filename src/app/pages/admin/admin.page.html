@@ -1,24 +1,31 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title class="ion-text-center">Admin</ion-title>
+<ion-header no-border>
+  <ion-toolbar color="primary"  style="text-align: center;" mode='ios'>
+    <ion-title>La Estación Tapas & Vinos</ion-title>
   </ion-toolbar>
+  <div class="login-header ion-padding">
+    <img src="assets/icon/icono.jpg" class="logo-img">
+  </div>
 </ion-header>
-
 <ion-content>
-  <img class="icon" src="assets/icon/graphic2.svg" alt="">
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
-      <ion-input type="text" #email required></ion-input>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" #password required></ion-input>
-    </ion-item>
-    <ion-row>
-      <ion-col>
-        <ion-button type="submit" (click)="onLogin(email, password)" expand="block">Login</ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
-</ion-content>
+  <div class="center">
+
+    <div heading-column-lr>
+
+      <h1 big-heading color="primary">Iniciar Sesión</h1>
+     
+
+    </div>
+<ion-item transparent>
+  <img src="assets/user.png" icon-small>
+  <ion-input #email type="text" placeholder="Email"></ion-input>
+</ion-item>
+<ion-item transparent>
+  <img src="assets/candado.png" icon-small>
+  <ion-input #password  type="password" placeholder="Contraseña"></ion-input>
+
+</ion-item>
+
+<div linespace></div>
+<ion-button type="submit" (click)="onLogin(email, password)" expand="block">Login</ion-button>
+</div>
+

@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AngularFirestoreModule } from "@angular/fire/firestore"; //Modulo Firestore (BD)
 import { AngularFireAuthModule } from "@angular/fire/auth";  //Modulo de authenticacion
 import { AngularFireModule } from "@angular/fire";            //Modulo para inicializar y que todo funcione
+import { AngularFireStorageModule } from "@angular/fire/storage"; //Storage
 import { environment } from 'src/environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { IonicStorageModule } from '@ionic/storage';
@@ -24,6 +25,7 @@ import { PipesModule } from './pipes/pipes.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     ComponentsModule,
     PipesModule,
     IonicStorageModule.forRoot(),

@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar mode='ios'>
+    
     <ion-title>Editar </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,9 +14,13 @@
     <ion-label>Descripción: </ion-label>
     <ion-input [(ngModel)]="Producto.descripcion" type="text" placeholder="http://imagen"></ion-input>
   </ion-item>
+  
   <ion-item>
-    <ion-label>Imagen: </ion-label>
-    <ion-input [(ngModel)]="Producto.imagen" type="text" placeholder="Nombre"></ion-input>
+    <ion-label>Imagen Actual: </ion-label>
+    <ion-input [(ngModel)]="Producto.imagen" type="text" placeholder="http://imagen" disabled></ion-input>
+  </ion-item>
+  <ion-item>
+    <input style="left: 0px;" type="file" name="inputFile" (change)="chooseFile($event)" require>
   </ion-item>
   <ion-item>
     <ion-label>Precio: </ion-label>

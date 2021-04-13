@@ -17,7 +17,7 @@ export class FinalizarPage implements OnInit {
     private alertCtrl:AlertController,
     private modalCtrl:ModalController,
     private navCtrl:NavController) { }
-  numero = '593996130636'
+  numero = '593992734448';
   
   //
 nombre='';
@@ -50,16 +50,16 @@ async enviar(){
   && this.direccion!=='' && this.referencia!=='' && this.comentario !== ''){
 
   
-  let texto ='*Pedido*' ;
-  texto += '    *Nombre*: ' +this.nombre;
-  texto += '     *Tipo envio*: ' + this.envio;
-  texto += '     *Tipo pago*:' + this.pago;
+ 
+  let texto = '*Cliente*: ' +this.nombre;
+  texto += '     *Tipo de envio*: ' + this.envio;
+  texto += '     *Tipo de pago*:' + this.pago;
   texto += '    *Dirección*: ' + this.direccion;
   texto += '    *Referencia Dirección*: ' + this.referencia;
   texto += '    *Comentario* ' + this.comentario;
   texto += '    *Artículos* ' ;
   texto+=this.strinProductos;
-  texto += ' *Para un mejor servicio, porfavor envianos tu ubicación* '
+  texto += ' *Para que tu pedido llegue de inmediato, por favor envíanos tu ubicación.* '
   let url = 'https://wa.me/' + this.numero + '?text=' + texto;
   const browser = this.iab.create(url,'_system');
   this.dataLocal.setear();

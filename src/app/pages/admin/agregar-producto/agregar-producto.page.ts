@@ -12,10 +12,13 @@ import { CrudCategoriasService } from '../../../services/crud-categorias.service
   styleUrls: ['./agregar-producto.page.scss'],
 })
 export class AgregarProductoPage implements OnInit {
-
+  selectedFile:any;
+  chooseFile (event) {
+    this.selectedFile = event.target.files[0];
+    console.log('img',this.selectedFile); 
+  }
   Producto:producto={
     nombre:'',
-    id:'',
     descripcion:'',
     imagen:'',
     precio:0,
@@ -42,9 +45,9 @@ export class AgregarProductoPage implements OnInit {
  
   async agregar(){
   
-  if(this.Producto.nombre!=='' && this.Producto.imagen!=='' && this.Producto.descripcion!==''
-  && this.Producto.precio!=0 && this.Producto.categoria!=='' ){
-  this.ProductosService.inserProducto(this.Producto);
+  if(this.Producto.nombre!=='' && this.Producto.descripcion!==''
+  && this.Producto.precio!=0 && this.Producto.categoria!==''&& this.chooseFile!=null ){
+  this.ProductosService.addImgProducto(this.Producto,this.selectedFile);
   this.navCtrl.navigateForward('/admin/administracion')
   }
   }

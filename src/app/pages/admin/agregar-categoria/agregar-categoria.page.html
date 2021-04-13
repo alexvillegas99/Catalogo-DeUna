@@ -10,11 +10,14 @@
 <ion-content>
 <ion-item>
   <ion-label>Nombre: </ion-label>
-  <ion-input [(ngModel)]="Categoria.nombre" type="text" placeholder="Nombre"></ion-input>
+  <ion-input [(ngModel)]="Categoria.nombre" type="text" placeholder="Nombre" required></ion-input>
 </ion-item>
 <ion-item>
-  <ion-label>Imagen: </ion-label>
-  <ion-input [(ngModel)]="Categoria.imagen" type="text" placeholder="http://imagen"></ion-input>
+
+<input style="left: 0px;" type="file" name="inputFile" (change)="chooseFile($event)" require>
+
+<!-- <ion-input [(ngModel)]="Categoria.imagen" type="text" placeholder="http://imagen"></ion-input>
+  --> 
 </ion-item>
 <ion-button (click)="agregar()" expand="block" >
   Agregar

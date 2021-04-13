@@ -10,10 +10,11 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./editar-categoria.page.scss'],
 })
 export class EditarCategoriaPage implements OnInit {
+  filePath:any;
   Categoria:categoria={
-    id:'',
     nombre:'',
-    imagen:''
+    imagen:'',
+    estado: true
   };
   constructor(private ruta: ActivatedRoute,
               private CategoriaService:CrudCategoriasService,
@@ -28,11 +29,17 @@ id='';
       this.Categoria = res;
     }) ;
   }
+  chooseFile (event) {
+    this.filePath = event.target.files[0];
+  }
  async editar(){
     
-if(this.Categoria.nombre!=='' && this.Categoria.imagen!=='' ){
+if(this.Categoria.nombre!=='' && this.filePath===undefined){
   this.CategoriaService.updateCategoria(this.Categoria,this.id);
   this.navCtrl.navigateForward('/admin/administracion')
+  }else{
+    this.CategoriaService.updateImagen(this.Categoria,this.id,this.filePath);
+    this.navCtrl.navigateForward('/admin/administracion')
   }
   }
 

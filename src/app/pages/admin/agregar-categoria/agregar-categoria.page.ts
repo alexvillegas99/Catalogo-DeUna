@@ -10,20 +10,24 @@ import { categoria } from '../../../interfaces/categoria';
 })
 export class AgregarCategoriaPage implements OnInit {
 Categoria?:categoria={
-  id:'',
   nombre:'',
-  imagen:''
+  imagen:'',
+  estado:true
 }
-
+selectedFile:File;
   constructor(private categoriaService:CrudCategoriasService,
     private alertCtrl:AlertController,
     private navCtrl:NavController) { }
   ngOnInit() {
   }
+  chooseFile (event) {
+    this.selectedFile = event.target.files[0];
+  }
+
   async agregar(){
-if(this.Categoria.nombre!=='' && this.Categoria.imagen!=='' ){
-this.categoriaService.inserCategoria(this.Categoria);
-this.navCtrl.navigateForward('/admin/administracion')
+if(this.Categoria.nombre!==''  ){
+this.categoriaService.addImgCategoria(this.Categoria,this.selectedFile);
+this.navCtrl.navigateForward('/admin/administracion');
 }else{
   const alert = await this.alertCtrl.create({
     cssClass: 'my-custom-class',
@@ -31,7 +35,7 @@ this.navCtrl.navigateForward('/admin/administracion')
     message: 'Llenar todos los campos',
     buttons: ['Aceptar']
   });
-
+ 
   await alert.present();
 }
   }

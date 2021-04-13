@@ -52,6 +52,8 @@
           <h2>Producto: {{producto.nombre}}</h2>
           <h3>Descripción: {{producto.descripcion}}</h3>
           <h3>Precio: ${{producto.precio}}</h3>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="producto.estado" color="success" slot="end">Activo</ion-button>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="!producto.estado" color="danger" slot="end">Inactivo</ion-button>
           <ion-button (click)="editarProducto(producto.id)"  slot="end">Editar</ion-button>
           <ion-button (click)="eliminarProducto(producto.id)" color="danger" slot="end">Eliminar</ion-button>
         </ion-label>
@@ -59,6 +61,25 @@
     </ion-list>
   </div>
   <!--Fin Todo-->
+    
+  <!--Buscar-->
+  <div *ngIf="busqueda">
+ 
+    <ion-list *ngFor="let producto of productosFiltrados " color="dark">
+      <ion-item color="dark">
+        <ion-img class="mini" [src]="producto.imagen"></ion-img>
+        <ion-label class="ion-text-end text-small">
+          <h2>Producto: {{producto.nombre}}</h2>
+          <h3>Descripción: {{producto.descripcion}}</h3>
+          <h3>Precio: ${{producto.precio}}</h3>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="producto.estado" color="success" slot="end">Activo</ion-button>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="!producto.estado" color="danger" slot="end">Inactivo</ion-button>
+          <ion-button (click)="editarProducto(producto.id)"  slot="end">Editar</ion-button>
+          <ion-button (click)="eliminarProducto(producto.id)" color="danger" slot="end">Eliminar</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

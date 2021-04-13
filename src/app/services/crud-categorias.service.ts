@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { categoria } from '../interfaces/categoria';
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CrudCategoriasService {
-
+private filePath:any;
+private dowloadURL:Observable<string>;
   private CategoriaCollection: AngularFirestoreCollection<categoria>;
   private categoria: Observable<categoria[]>;
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore,
+    private storage:AngularFireStorage) {
 
     this.CategoriaCollection = db.collection<categoria>('categorias');
     this.categoria = this.CategoriaCollection.snapshotChanges().pipe(map(
@@ -23,6 +27,37 @@ export class CrudCategoriasService {
       }
     ))
 
+  }
+  addImgCategoria(categoria:categoria,img:File){
+this.filePath = `Categorias/${img.name}`;
+const fileRef=this.storage.ref(this.filePath);
+const task=this.storage.upload(this.filePath,img);
+
+task.snapshotChanges()
+.pipe(
+  finalize(()=>{
+    fileRef.getDownloadURL().subscribe(urlImagen=>{
+    categoria.imagen=urlImagen;
+    this.inserCategoria(categoria);
+    })
+  })
+).subscribe();
+  }
+  updateImagen(categoria:categoria,id:string,img:File){
+    this.filePath = `Categorias/${img.name}`;
+const fileRef=this.storage.ref(this.filePath);
+const task=this.storage.upload(this.filePath,img);
+
+task.snapshotChanges()
+.pipe(
+  finalize(()=>{
+    fileRef.getDownloadURL().subscribe(urlImagen=>{
+    categoria.imagen=urlImagen;
+    this.updateCategoria(categoria,id);
+    })
+  })
+).subscribe();
+  
   }
   getCategorias() {
     return this.categoria;

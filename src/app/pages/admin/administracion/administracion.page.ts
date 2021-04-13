@@ -25,13 +25,16 @@ export class AdministracionPage implements OnInit {
   tipos = ['Categorias', 'Todo'];
   cambiar = true;
   productos: producto[] = [];
+  productosFiltrados:producto[]=[];
   Categorias: categoria[] = [];
+  mensaje='';
   textoBuscar = '';
   busqueda = false;
   ngOnInit() {
     this.dataLocal.setear();
     this.crudService.getProductos().subscribe(res => {
       this.productos = res;
+      
     });
     this.cargarCategorias();
 
@@ -112,7 +115,23 @@ export class AdministracionPage implements OnInit {
       this.busqueda = false;
     } else {
       this.busqueda = true;
-
     }
+    this.productosFiltrados = [];
+    let longitud: number = this.textoBuscar.length;
+    this.productos.forEach(producto => {
+      if (this.textoBuscar.toLocaleLowerCase() === producto.nombre.substring(0, longitud).toLocaleLowerCase()) {
+        this.productosFiltrados.push(producto);
+      }
+    })
+
+    if (this.productosFiltrados.length == 0) {
+      this.mensaje = 'No se encontraron coincidencias';
+    } else {
+      this.mensaje = ''
+    }
+  }
+  async actualizarStock(producto:producto){
+    producto.estado=!producto.estado;
+    this.ProductosServices.updateProducto(producto,producto.id);
   }
 }
