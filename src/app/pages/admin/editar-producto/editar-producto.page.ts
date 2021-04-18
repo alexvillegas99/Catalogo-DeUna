@@ -43,7 +43,7 @@ export class EditarProductoPage implements OnInit {
     this.cargarProducto(this.id);
     this.cargarCategorias();
   }
-  async cargarProducto(id) {
+  async cargarProducto(id) { 
     await this.ProductosService.getProducto(id).subscribe(res => {
       this.Producto = res;
     });
@@ -53,10 +53,10 @@ export class EditarProductoPage implements OnInit {
     if (this.Producto.nombre !== ''  && this.selectedFile===undefined && this.Producto.descripcion !== ''
       && this.Producto.precio != 0 && this.Producto.categoria !== '') {
       this.ProductosService.updateProducto(this.Producto, this.id);
-      this.navCtrl.navigateForward('/admin/administracion')
+      this.navCtrl.navigateForward('/admin/promociones')
     }else{
       this.ProductosService.updateImagenProducto(this.Producto, this.id,this.selectedFile);
-      this.navCtrl.navigateForward('/admin/administracion')
+      this.navCtrl.navigateForward('/admin/promociones')
     }
   }
 

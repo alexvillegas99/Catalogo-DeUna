@@ -25,7 +25,7 @@ direccion='';
 referencia='';
 comentario='';
 envio='Domicilio';
-pago='Efectivo';
+FormaPago='Efectivo';
 total=0;
 strinProductos ='';
   ngOnInit() {
@@ -37,23 +37,23 @@ strinProductos ='';
     let cont=1;
     this.productos.forEach(producto => {
       this.strinProductos+= '    *N'+cont+'*: '     + producto.nombre  ;
-      this.strinProductos+= '   *Precio*: ' + producto.precio ;
+      this.strinProductos+= '   *Precio*: $' + producto.precio ;
       this.strinProductos+= '    *Cantidad*: ' + producto.cantidad  ;
-      this.strinProductos+= '    *Total Artículo*: ' + producto.total;
+      this.strinProductos+= '    *Total Artículo*: $' + producto.total;
       this.total += producto.total;
       cont++;
     })
-    this.strinProductos +='    *Total Compra*: ' + this.total;
+    this.strinProductos +='    *Total Compra*: $' + this.total;
   }
 async enviar(){
-  if(this.nombre !== ' ' && this.envio!=='' && this.pago!=='' 
+  if(this.nombre !== ' ' && this.envio!=='' && this.FormaPago!=='' 
   && this.direccion!=='' && this.referencia!=='' && this.comentario !== ''){
 
   
  
   let texto = '*Cliente*: ' +this.nombre;
   texto += '     *Tipo de envio*: ' + this.envio;
-  texto += '     *Tipo de pago*:' + this.pago;
+  texto += '     *Tipo de pago*:' + this.FormaPago;
   texto += '    *Dirección*: ' + this.direccion;
   texto += '    *Referencia Dirección*: ' + this.referencia;
   texto += '    *Comentario* ' + this.comentario;

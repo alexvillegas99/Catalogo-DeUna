@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar mode='ios' color="primary">
     <ion-buttons slot="start">
-      <ion-back-button routerLink='../administracion'></ion-back-button>
+      <ion-back-button routerLink='../'></ion-back-button>
     </ion-buttons>
-    <ion-title>Agregar Producto </ion-title>
+    <ion-title>Agregar Promocion </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -24,11 +24,15 @@
     <ion-input [(ngModel)]="Producto.precio" type="text" placeholder=""></ion-input>
   </ion-item>
   <ion-item>
+    <ion-label>Precio promoción: </ion-label>
+    <ion-input [(ngModel)]="Producto.preciop" type="text" placeholder=""></ion-input>
+  </ion-item>
+ <!--  <ion-item>
     <ion-label>Categoria: </ion-label>
     <ion-select placeholder="Categoria" [(ngModel)]="Producto.categoria" >
       <ion-select-option *ngFor="let categoria of Categorias">{{categoria.nombre}}</ion-select-option>
     </ion-select>
-  </ion-item>
+  </ion-item> -->
  <!--<ion-item>
     <ion-label>Estado: </ion-label>
     <ion-select placeholder="Estado" value='Producto.estado'>
@@ -40,7 +44,7 @@
   <ion-button (click)="agregar()" expand="block" >
     Agregar
   </ion-button>
-  <ion-button expand="block" color="danger" [routerLink]="['../administracion']" routerLinkActive="router-link-active" >
+  <ion-button expand="block" color="danger" [routerLink]="['../']" routerLinkActive="router-link-active" >
     Cancelar
   </ion-button>
 </ion-content>

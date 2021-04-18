@@ -12,10 +12,7 @@ import { CarritoPage } from '../carrito/carrito.page';
 export class ModalProductoPage implements OnInit {
 
   @Input() producto: producto;
-  slideOpts = {
-    allowSlidePrev: false,
-    allowSlideNext: false
-  }
+
   total=0;
   constructor(private navCtrl: NavController,
     private modalCtrl: ModalController,

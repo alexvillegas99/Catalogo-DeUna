@@ -5,6 +5,9 @@
 </ion-header>
 
 <ion-content color="dark">
+  <ion-button routerLink="../promociones"  expand="block" mode='ios'>
+    Revisar las promociones del día.
+  </ion-button>
   <ion-searchbar placeholder="Buscar..." debounce='700' inputmode="text" (ionChange)='buscar($event)'></ion-searchbar>
   <ion-segment scrollable mode="md" *ngIf="!busqueda" color="primary" style="width: 100%;" value="Categorias"
     (ionChange)="CambioTipo($event)">

@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'editar-producto/:id',
     loadChildren: () => import('./editar-producto/editar-producto.module').then( m => m.EditarProductoPageModule)
+  },
+  {
+    path: 'promociones',
+    loadChildren: () => import('./promociones/promociones.module').then( m => m.PromocionesPageModule)
   }
 ];
 

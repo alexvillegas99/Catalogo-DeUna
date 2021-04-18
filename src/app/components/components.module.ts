@@ -5,12 +5,13 @@ import { EncabezadoComponent } from './encabezado/encabezado.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { PromocionesComponent } from './promociones/promociones.component';
 
 
 
 @NgModule({
-  declarations: [ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent],
-  exports: [ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent],
+  declarations: [ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent,PromocionesComponent],
+  exports: [ProductosComponent,EncabezadoComponent,CategoriasComponent,CategoriaComponent,PromocionesComponent],
   imports: [
     CommonModule,PipesModule
   ],

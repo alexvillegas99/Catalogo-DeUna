@@ -134,4 +134,5 @@ export class AdministracionPage implements OnInit {
     producto.estado=!producto.estado;
     this.ProductosServices.updateProducto(producto,producto.id);
   }
+ 
 }

@@ -1,0 +1,25 @@
+
+<ion-header  translucent>
+  <ion-toolbar color="primary" mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink='/inicio' routerLinkActive="router-link-active" ></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize" >Promociones</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+<ion-list *ngFor="let producto of promociones " color="dark">
+  <ion-item color="dark"  (click)="mostrarModal(producto)">
+        <ion-img [src]="producto.imagen"></ion-img>
+    <ion-label  class="ion-text-end text-small">
+      <h2>Producto: {{producto.nombre}}</h2>
+      <h3>Descripción: {{producto.descripcion}}</h3>
+      <h3>Precio: <span style=" text-decoration: line-through; color: darkgrey;">  &nbsp;&nbsp;&nbsp;${{producto.precio}}  </span>
+        &nbsp;&nbsp;&nbsp;<span> ${{producto.preciop  }} </span>
+      </h3>
+    </ion-label>
+ </ion-item>
+</ion-list>
+</ion-content>
+  

@@ -39,6 +39,10 @@ const routes: Routes = [
   {
     path: 'menu',
     loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule)
+  },
+  {
+    path: 'promociones',
+    loadChildren: () => import('./pages/promociones/promociones.module').then( m => m.PromocionesPageModule)
   }
 ];
 
