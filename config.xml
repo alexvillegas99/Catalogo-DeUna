@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.DeOne.av" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>De One</name>
+    <name>De Una</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="avillegas7510@uta.edu.ec" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
@@ -16,8 +16,8 @@
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
-    <preference name="SplashScreen" value="none" />
-    <preference name="SplashScreenDelay" value="0" />
+    <preference name="SplashScreen" value="screem" />
+    <preference name="SplashScreenDelay" value="3000" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
             <application android:networkSecurityConfig="@xml/network_security_config" />

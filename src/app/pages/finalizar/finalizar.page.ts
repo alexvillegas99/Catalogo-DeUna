@@ -43,22 +43,22 @@ strinProductos ='';
       this.total += producto.total;
       cont++;
     })
+    this.total = Number((this.total+1).toFixed(2));
+    this.strinProductos += '*Delivery*: $1';
     this.strinProductos +='    *Total Compra*: $' + this.total;
   }
 async enviar(){
   if(this.nombre !== ' ' && this.envio!=='' && this.FormaPago!=='' 
   && this.direccion!=='' && this.referencia!=='' && this.comentario !== ''){
-
-  
- 
   let texto = '*Cliente*: ' +this.nombre;
   texto += '     *Tipo de envio*: ' + this.envio;
   texto += '     *Tipo de pago*:' + this.FormaPago;
   texto += '    *Dirección*: ' + this.direccion;
   texto += '    *Referencia Dirección*: ' + this.referencia;
-  texto += '    *Comentario* ' + this.comentario;
+  texto += '    *Comentario*: ' + this.comentario;
   texto += '    *Artículos* ' ;
   texto+=this.strinProductos;
+  
   texto += ' *Para que tu pedido llegue de inmediato, por favor envíanos tu ubicación.* '
   let url = 'https://wa.me/' + this.numero + '?text=' + texto;
   const browser = this.iab.create(url,'_system');
@@ -76,7 +76,7 @@ async enviar(){
 }
 }
 cancelar(){
-  this.modalCtrl.dismiss();
+  this.navCtrl.navigateForward('/carrito');
 }
 
 }

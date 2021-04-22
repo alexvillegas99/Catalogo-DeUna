@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
-import { FinalizarPage } from '../finalizar/finalizar.page';
 import { EditarPage } from '../editar/editar.page';
 
 @Component({
@@ -28,9 +27,9 @@ export class CarritoPage implements OnInit {
   async calculaTotal() {
     let total=0;
     this.productos.forEach(producto => {
-      total += producto.total;
+      total += Number(producto.total.toFixed(2));
     })
-    this.total=total;
+    this.total=Number((total+1).toFixed(2));
   }
   async cargarProductos() {
     let total = 0;

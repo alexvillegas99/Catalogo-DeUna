@@ -22,6 +22,9 @@
    </ion-item>
   </ion-list>
   <ion-item color="dark"  *ngIf="finalizar">
+    <ion-label class="ion-text-end text-small"><h2>Delivery: $1</h2></ion-label>
+  </ion-item>
+  <ion-item color="dark"  *ngIf="finalizar">
     <ion-label class="ion-text-end text-small"><h3>Total: {{total}}</h3></ion-label>
   </ion-item>
   <ion-label style="text-align: center;" color="danger"><h1 *ngIf="!finalizar">No hay productos seleccionados</h1></ion-label>
