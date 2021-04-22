@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="primary"  mode='ios' style="text-align: center;">
     <ion-buttons slot="start" routerLink='/' >
-      <ion-back-button></ion-back-button>
+      <ion-back-button  color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title>Productos Seleccionados</ion-title>
+    <ion-title color="light">Productos Seleccionados</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
         <h3>Precio: ${{producto.precio}}</h3>
         <h3>Cantidad: {{producto.cantidad}}</h3>
           <h3>Total: ${{producto.total}}</h3>
-          <ion-button (click)="editar(producto)" slot="end">Editar</ion-button>
+          <ion-button (click)="editar(producto)" slot="end" color="warning">Editar</ion-button>
           <ion-button (click)="eliminar(producto)" color="danger" slot="end">Eliminar</ion-button>
       </ion-label>
    </ion-item>
@@ -26,10 +26,10 @@
   </ion-item>
   <ion-label style="text-align: center;" color="danger"><h1 *ngIf="!finalizar">No hay productos seleccionados</h1></ion-label>
 
-<ion-button routerLink='/' routerLinkActive="router-link-active"  expand="block" >
+<ion-button routerLink='/' routerLinkActive="router-link-active" color="warning" expand="block" >
   Agregar más productos
 </ion-button>
-<ion-button routerLink='/finalizar' *ngIf="finalizar"  expand="block" >
+<ion-button routerLink='/finalizar' *ngIf="finalizar" color="success"  expand="block" >
   Finalizar Compra
 </ion-button>
 </ion-content>

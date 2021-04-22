@@ -20,7 +20,7 @@ export class ModalProductoPage implements OnInit {
     private toas:ToastController) { }
  
   ngOnInit() {
-    this.producto.total = (this.producto.cantidad=0) * this.producto.precio;
+    this.producto.total = Number(((this.producto.cantidad=0) * this.producto.precio).toFixed(2))
   }
   calcular(signo) {
     let valor = eval( this.producto.cantidad+ signo + 1)

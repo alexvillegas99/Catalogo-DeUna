@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar color="primary" mode='ios'>
     <ion-buttons slot="start">
-      <ion-back-button routerLink='../administracion'></ion-back-button>
+      <ion-back-button color="light" routerLink='../administracion'></ion-back-button>
     </ion-buttons>
-    <ion-title>Promociones del día.</ion-title>
+    <ion-title color="light">Promociones del día.</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-  <ion-button expand="block" routerLink='agregar-promocion'>
+<ion-content color="dark">
+  <ion-button expand="block" color="success" routerLink='agregar-promocion'>
     Añadir Promoción
   </ion-button>
   <ion-list *ngFor="let producto of promociones " color="dark">
@@ -23,7 +23,7 @@
         </h3>
         <ion-button (click)="actualizarStock(producto)" *ngIf="producto.estado" color="success" slot="end">Activo</ion-button>
         <ion-button (click)="actualizarStock(producto)" *ngIf="!producto.estado" color="danger" slot="end">Inactivo</ion-button>
-        <ion-button (click)="editarProducto(producto.id)"  slot="end">Editar</ion-button>
+        <ion-button (click)="editarProducto(producto.id)" color="warning"  slot="end">Editar</ion-button>
         <ion-button (click)="eliminarProducto(producto.id)" color="danger" slot="end">Eliminar</ion-button>
       </ion-label>
    </ion-item>

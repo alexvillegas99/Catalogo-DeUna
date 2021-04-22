@@ -15,7 +15,7 @@ export class AgregarProductoPage implements OnInit {
   selectedFile:any;
   chooseFile (event) {
     this.selectedFile = event.target.files[0];
-    console.log('img',this.selectedFile); 
+  
   }
   Producto:producto={
     nombre:'',

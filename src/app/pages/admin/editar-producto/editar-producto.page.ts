@@ -53,10 +53,10 @@ export class EditarProductoPage implements OnInit {
     if (this.Producto.nombre !== ''  && this.selectedFile===undefined && this.Producto.descripcion !== ''
       && this.Producto.precio != 0 && this.Producto.categoria !== '') {
       this.ProductosService.updateProducto(this.Producto, this.id);
-      this.navCtrl.navigateForward('/admin/promociones')
+      this.navCtrl.navigateForward('/admin/administracion')
     }else{
       this.ProductosService.updateImagenProducto(this.Producto, this.id,this.selectedFile);
-      this.navCtrl.navigateForward('/admin/promociones')
+      this.navCtrl.navigateForward('/admin/administracion')
     }
   }
 

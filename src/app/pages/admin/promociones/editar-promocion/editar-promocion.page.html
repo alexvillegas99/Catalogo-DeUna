@@ -1,32 +1,34 @@
 <ion-header>
-  <ion-toolbar mode='ios'>
-    
-    <ion-title>Editar </ion-title>
+  <ion-toolbar color="primary" mode='ios'>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" routerLink='../../'></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Editar </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-item>
+<ion-content color="dark">
+  <ion-item color="dark">
     <ion-label>Nombre: </ion-label>
     <ion-input [(ngModel)]="Producto.nombre" type="text" placeholder="Nombre"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Descripción: </ion-label>
     <ion-input [(ngModel)]="Producto.descripcion" type="text" placeholder="http://imagen"></ion-input>
   </ion-item>
   
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Imagen Actual: </ion-label>
     <ion-input [(ngModel)]="Producto.imagen" type="text" placeholder="http://imagen" disabled></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <input style="left: 0px;" type="file" name="inputFile" (change)="chooseFile($event)" require>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Precio: </ion-label>
     <ion-input [(ngModel)]="Producto.precio" type="text" placeholder="http://imagen"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Precio promocion: </ion-label>
     <ion-input [(ngModel)]="Producto.preciop" type="text" ></ion-input>
   </ion-item>
@@ -38,7 +40,7 @@
     </ion-select>
   </ion-item>
 -->
-  <ion-button (click)="editar()" expand="block" >
+  <ion-button (click)="editar()" color="success" expand="block" >
     Editar
   </ion-button>
     <ion-button  expand="block" color="danger" [routerLink]="['../..']" routerLinkActive="router-link-active" >

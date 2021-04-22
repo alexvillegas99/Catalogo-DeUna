@@ -1,23 +1,23 @@
 <ion-header >
   <ion-toolbar mode='ios' color="primary" style="text-align: center;">
     <ion-buttons slot="start">
-      <ion-back-button routerLink='/carrito' routerLinkActive="router-link-active" ></ion-back-button>
+      <ion-back-button color="light" routerLink='/carrito' routerLinkActive="router-link-active" ></ion-back-button>
     </ion-buttons>
-    <ion-title>Finalizar Pedido</ion-title>
+    <ion-title color="light">Finalizar Pedido</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content mode='ios' class="ion-padding">
-  <ion-item>
+<ion-content mode='ios' class="ion-padding" color="dark">
+  <ion-item color="dark">
     <ion-label>Nombre: </ion-label>
     <ion-input [(ngModel)]="nombre" type="text" ></ion-input>
   </ion-item>
 
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Tipo de envio: </ion-label>
     <ion-label>Domicilio</ion-label>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Forma de pago: </ion-label>
     <ion-select placeholder="Efectivo" [(ngModel)]="FormaPago" >
       <ion-select-option >Efectivo</ion-select-option>
@@ -26,22 +26,22 @@
     </ion-select>
  
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Dirección: </ion-label>
     <ion-input [(ngModel)]="direccion" type="text"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Referencia de dirección: </ion-label>
     <ion-input [(ngModel)]="referencia" type="text" ></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item color="dark">
     <ion-label>Comentario: </ion-label>
     <ion-input [(ngModel)]="comentario" type="text" ></ion-input>
   </ion-item>
-  <ion-button style="margin-top: 20px;" (click)="enviar()" expand="block" >
+  <ion-button style="margin-top: 20px;" (click)="enviar()" color="success" expand="block" >
     Enviar
   </ion-button>
-  <ion-button  color="danger" (click)="cancelar()" expand="block" >
+  <ion-button  color="danger" (click)="cancelar()" color="danger" expand="block" >
     Regresar
   </ion-button>
  

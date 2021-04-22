@@ -6,7 +6,7 @@
 </ion-header>
   
  
-  <ion-content  mode='ios'>
+  <ion-content color="dark"  mode='ios'>
   <app-promociones [routerLink]="['/promociones']" routerLinkActive="router-link-active" *ngIf="!busqueda"></app-promociones>
    <ion-searchbar placeholder="Buscar..."  debounce='700'   color="light"
    inputmode="text" (ionChange)='buscar($event)' ></ion-searchbar>
