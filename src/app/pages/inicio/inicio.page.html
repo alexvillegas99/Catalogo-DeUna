@@ -12,7 +12,7 @@
    inputmode="text" (ionChange)='buscar($event)' ></ion-searchbar>
  <!-- <app-productos [productos]='productos'></app-productos>-->
  <!-- Segmento Categorias y todo-->
- <ion-segment scrollable mode="md" *ngIf="!busqueda" color="primary"  value="Categorias"  
+ <ion-segment  mode="md" *ngIf="!busqueda" color="primary"  value="Categorias"  
     (ionChange)="CambioTipo($event)">
     <ion-segment-button mode="md" value="Opcion"  *ngFor="let tipo of tipos" [value]='tipo'>
       <ion-label text-capitalize color="light"> {{tipo}}</ion-label>

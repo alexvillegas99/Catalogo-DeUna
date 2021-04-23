@@ -10,7 +10,7 @@
 <ion-content color="dark">
   
 <ion-list *ngFor="let producto of promociones " color="dark">
-  <ion-item color="dark"  (click)="mostrarModal(producto)">
+  <ion-item color="dark"  (click)="mostrarModal(producto)" style="cursor: pointer;">
         <ion-img [src]="producto.imagen"></ion-img>
     <ion-label  class="ion-text-end text-small">
       <h2>Producto: {{producto.nombre}}</h2>
