@@ -1,11 +1,17 @@
-<ion-grid fixed  >
-  <ion-row>
-    <ion-col size="12"> 
-      <ion-item color="dark" style="cursor: pointer;">
-        <h1>Prociones del día.</h1>
-        <img slot="end" style="height: 100px; width: 100px; border-radius: 100%;"
-        src="assets/icon/icono.jpg"/>
-      </ion-item>
-       </ion-col>
-  </ion-row>
-</ion-grid>
+<div class="title ion-padding">
+  <h2>Promociones</h2>
+  <p (click)="navegar()">Mirar más</p>
+</div>
+<div class="product-slider ion-padding-start">
+  <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+    <ion-slide  (click)="mostrarModal(producto)"*ngFor="let producto of productos ">
+      <ion-col class="ion-text-left" routerLink="/item-detail" routerDirection="forward">
+        <img src="{{ producto.imagen }}" />
+        <p><span style=" text-decoration: line-through; color: darkgrey;">  &nbsp;&nbsp;&nbsp;${{producto.precio}}  </span>
+          &nbsp;&nbsp;&nbsp;<span> ${{producto.preciop  }} </span></p>
+        <h6>{{ producto.nombre }}</h6>
+      
+      </ion-col>
+    </ion-slide>
+  </ion-slides>
+</div>

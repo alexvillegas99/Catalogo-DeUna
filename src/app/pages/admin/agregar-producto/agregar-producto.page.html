@@ -25,7 +25,7 @@
   </ion-item>
   <ion-item color="dark">
     <ion-label>Categoria: </ion-label>
-    <ion-select placeholder="Categoria" [(ngModel)]="Producto.categoria" >
+    <ion-select placeholder="Categoria" [(ngModel)]="Producto.categoria" mode='ios'>
       <ion-select-option *ngFor="let categoria of Categorias">{{categoria.nombre}}</ion-select-option>
     </ion-select>
   </ion-item>

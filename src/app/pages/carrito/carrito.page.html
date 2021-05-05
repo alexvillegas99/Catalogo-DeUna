@@ -1,9 +1,11 @@
 <ion-header>
-  <ion-toolbar color="primary"  mode='ios' style="text-align: center;">
-    <ion-buttons slot="start" routerLink='/' >
-      <ion-back-button  color="light"></ion-back-button>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="backbtn" routerLink="/" routerDirection="back">
+        <ion-icon name="arrow-back-outline" color="black"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title color="light">Productos Seleccionados</ion-title>
+    <ion-title mode='ios'> CARRITO</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,10 +24,10 @@
    </ion-item>
   </ion-list>
   <ion-item color="dark"  *ngIf="finalizar">
-    <ion-label class="ion-text-end text-small"><h2>Delivery: $1</h2></ion-label>
+    <ion-label class="ion-text-end text-small"><h2>Delivery: $2</h2></ion-label>
   </ion-item>
   <ion-item color="dark"  *ngIf="finalizar">
-    <ion-label class="ion-text-end text-small"><h3>Total: {{total}}</h3></ion-label>
+    <ion-label class="ion-text-end text-small"><h3>Total: ${{total}}</h3></ion-label>
   </ion-item>
   <ion-label style="text-align: center;" color="danger"><h1 *ngIf="!finalizar">No hay productos seleccionados</h1></ion-label>
 

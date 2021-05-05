@@ -9,14 +9,14 @@
    <label style="color: #ffff !important;"> Revisar las promociones del día.</label>
   </ion-button>
   <ion-searchbar placeholder="Buscar..." debounce='700' inputmode="text" (ionChange)='buscar($event)'></ion-searchbar>
-  <ion-segment scrollable mode="md" *ngIf="!busqueda" color="primary" style="width: 100%;" value="Categorias"
+  <ion-segment  mode="md" *ngIf="!busqueda" color="primary" style="width: 100%;" value="Categorias"
     (ionChange)="CambioTipo($event)">
     <ion-segment-button mode="md" value="Opcion" style="width: 50%;" *ngFor="let tipo of tipos" [value]='tipo'>
-      <ion-label text-capitalize color="light">{{tipo}}</ion-label>
+      <ion-label text-capitalize color="black">{{tipo}}</ion-label>
     </ion-segment-button>
   </ion-segment>
   <!--Categorias-->
-  <div *ngIf="cambiar && !busqueda">
+  <div *ngIf="categoria && !busqueda">
     <ion-button color="success" expand="block" routerLink='../agregar-categoria'>
       Añadir Categoria
     </ion-button>
@@ -24,7 +24,7 @@
       <ion-row>
         <ion-col size="12" size-lg="3" size-md="4" size-sm="6" *ngFor="let categoria of Categorias">
           <ion-card>
-            <ion-img class="categoria" [routerLink]="['../listado-categoria',categoria.nombre]"
+            <ion-img class="categoria" style="height: 200px;" [routerLink]="['../listado-categoria',categoria.nombre]"
               [src]="categoria.imagen"></ion-img>
             <ion-label class="centrado">
               <h1>{{categoria.nombre}}</h1>
@@ -44,7 +44,7 @@
   </div>
   <!--Fin categorias-->
   <!--Todo-->
-  <div *ngIf="!cambiar && !busqueda">
+  <div *ngIf="activos && !busqueda">
     <ion-button expand="block" color="success" routerLink='../agregar-producto'>
       Agregar Producto
     </ion-button>
@@ -64,7 +64,24 @@
     </ion-list>
   </div>
   <!--Fin Todo-->
-    
+    <!-- Esto es los que estan inactivos -->
+  <div *ngIf="inactivos && !busqueda">
+    <ion-list *ngFor="let producto of productosInactivos " color="dark"  style="background-color: var(--ion-color-dark)">
+      <ion-item color="dark" style="cursor: pointer;" >
+        <ion-img class="mini" [src]="producto.imagen"></ion-img>
+        <ion-label class="ion-text-end text-small">
+          <h2>Producto: {{producto.nombre}}</h2>
+          <h3>Descripción: {{producto.descripcion}}</h3>
+          <h3>Precio: ${{producto.precio}}</h3>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="producto.estado" color="success" slot="end">Activo</ion-button>
+          <ion-button (click)="actualizarStock(producto)" *ngIf="!producto.estado" color="danger" slot="end">Inactivo</ion-button>
+          <ion-button (click)="editarProducto(producto.id)" color="warning" slot="end">Editar</ion-button>
+          <ion-button (click)="eliminarProducto(producto.id)" color="danger" slot="end">Eliminar</ion-button>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <!--Fin Todo-->
   <!--Buscar-->
   <div *ngIf="busqueda">
  

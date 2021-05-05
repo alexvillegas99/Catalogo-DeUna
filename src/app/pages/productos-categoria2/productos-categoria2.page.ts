@@ -4,14 +4,14 @@ import { CrudProductosService } from '../../services/crud-productos.service';
 import { producto } from 'src/app/interfaces/producto';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
 @Component({
-  selector: 'app-productos-categoria',
-  templateUrl: './productos-categoria.page.html',
-  styleUrls: ['./productos-categoria.page.scss'],
+  selector: 'app-productos-categoria2',
+  templateUrl: './productos-categoria2.page.html',
+  styleUrls: ['./productos-categoria2.page.scss'],
 })
-export class ProductosCategoriaPage implements OnInit, OnDestroy {
+export class ProductosCategoria2Page implements OnInit,OnDestroy {
 
+ 
   Productos: producto[] = [];
   categoria?: string;
   sucriptionProductos: Subscription = new Subscription();

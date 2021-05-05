@@ -1,11 +1,16 @@
-<!--<app-categoria [Productos]='Productos' [Categoria]='categoria' *ngFor="let categoria of Categorias"></app-categoria>-->
-  <ion-grid fixed >
-      <ion-row>
-          <ion-col size="12" size-lg="3" size-md="4" size-sm="6" *ngFor="let categoria of Categorias">
-              <ion-card (click)="MostrarModal(categoria)" style="cursor: pointer;"> 
-                  <ion-img [src]="categoria.imagen"></ion-img>
-                  <ion-label class="centrado"><h1>{{categoria.nombre}}</h1></ion-label>
-              </ion-card>
-          </ion-col>
-      </ion-row>
-  </ion-grid>
+
+<div class="title ion-padding">
+    <h2>Categorias</h2>
+    <p (click)="navegar()">Mirar más</p>
+  </div>
+  
+  <div class="category-slider ion-padding-start">
+    <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+      <ion-slide (click)="MostrarModal(categoria)" *ngFor="let categoria of Categorias">
+        <ion-col>
+          <h4>{{ categoria.nombre }}</h4>
+          <img src="{{ categoria.imagen }}" />
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+  </div>

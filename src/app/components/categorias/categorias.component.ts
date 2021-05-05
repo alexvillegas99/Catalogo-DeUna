@@ -21,4 +21,7 @@ export class CategoriasComponent implements OnInit {
   async MostrarModal(categoria: categoria) {
     this.navCtrl.navigateForward(`/productos-categoria/${categoria.nombre}`);
   }
+  navegar(){
+    this.navCtrl.navigateBack('/categorias');
+  }
 }

@@ -1,34 +1,31 @@
-
-<ion-header  translucent>
-  <ion-toolbar color="primary" mode='ios'>
-    <ion-title class="ion-text-capitalize" color="light" >SUPERMARKET ON LINE</ion-title>
+<!-- <ion-header>
+  <ion-toolbar text-center>
+    <ion-title class="ion-text-capitalize" style="color: black; text-align: center;" >SUPERMARKET ON LINE</ion-title>
   </ion-toolbar>
-</ion-header>
-  
- 
-  <ion-content color="dark"  mode='ios'>
-  <app-promociones [routerLink]="['/promociones']" routerLinkActive="router-link-active" *ngIf="!busqueda"></app-promociones>
-   <ion-searchbar placeholder="Buscar..."  debounce='700'   color="light"
-   inputmode="text" (ionChange)='buscar($event)' ></ion-searchbar>
- <!-- <app-productos [productos]='productos'></app-productos>-->
- <!-- Segmento Categorias y todo-->
- <ion-segment  mode="md" *ngIf="!busqueda" color="primary"  value="Categorias"  
-    (ionChange)="CambioTipo($event)">
-    <ion-segment-button mode="md" value="Opcion"  *ngFor="let tipo of tipos" [value]='tipo'>
-      <ion-label text-capitalize color="light"> {{tipo}}</ion-label>
-    </ion-segment-button>
-  </ion-segment> 
-   <!-- Categorias-->
-   <app-categorias *ngIf="cambiar && !busqueda" [Productos]='productos' [Categorias]='Categorias'></app-categorias>
-   <app-productos *ngIf="!cambiar && !busqueda"  [productos]='productos'></app-productos>
-   <app-productos *ngIf="busqueda"  [productos]='productosFiltrados'></app-productos>
-   <ion-label color="danger" style="text-align: center;"><h1>{{mensaje}}</h1></ion-label>
-    <!-- Categorias-->
-  </ion-content>
-  <ion-footer color="dark" mode='ios'>
-    <ion-button  routerLink="/carrito" routerLinkActive="router-link-active"  expand="block">
-      <ion-icon color="light"  name="cart-outline" slot="start"> </ion-icon>
-    <ion-label  color="light" >Productos Selecconados</ion-label> 
+</ion-header> -->
+<ion-content>
+  <div class="search ion-padding">
+    <ion-searchbar placeholder="Buscar..." debounce="700" color="light" inputmode="text" (ionChange)="buscar($event)">
+    </ion-searchbar>
+  </div>
+  <app-categorias *ngIf="!busqueda && ( productos !==undefined)" [Productos]="productos" [Categorias]="Categorias"></app-categorias>
+  <app-promociones *ngIf="!busqueda && ( productos !==undefined)" [productos]="promociones"></app-promociones>
+  <app-productos *ngIf="!busqueda && (productos !==undefined)" [productos]="productos"></app-productos>
+  <app-productos *ngIf="busqueda && productosFiltrados.length>1" [productos]="productosFiltrados"></app-productos>
+  <div class="contenedor" *ngIf="busqueda && productosFiltrados.length===0 && ( productos !==undefined)">
+    <img src="assets/noencontrado.svg" />
+    <h1>No se encontraron coincidencias</h1>
+  </div>
+  <div class="contenedor" *ngIf=" productos ===undefined">
+    <img src="assets/noencontrado.svg" />
+    <h1>No tienes conexión a internet</h1>
+  </div>
+</ion-content>
+<ion-footer *ngIf="!busqueda">
+  <ion-toolbar>
+    <ion-button routerLink="/carrito" routerLinkActive="router-link-active" expand="block">
+      <ion-icon color="light" name="cart-outline" slot="start"> </ion-icon>
+      <ion-label color="light">Productos Seleccionados</ion-label>
     </ion-button>
-  </ion-footer>
-  
+  </ion-toolbar>
+</ion-footer>

@@ -25,13 +25,15 @@ export class ModalProductoPage implements OnInit {
     
   }
   calcular(signo) {
+    let total:number;
     let valor = eval( this.producto.cantidad+ signo + 1)
-    if (valor === 0) {
-      this.producto.cantidad = 1;
+     if (valor <= 0) {
+      this.producto.cantidad = 0;
     } else {
       this.producto.cantidad = valor;
     }
-    this.producto.total  =  Number((this.producto.cantidad * this.producto.precio).toFixed(2));
+    total  =  this.producto.cantidad * this.producto.precio;
+    this.producto.total=Number(total.toFixed(2));
   }
   salir() {
     this.modalCtrl.dismiss();
@@ -39,12 +41,13 @@ export class ModalProductoPage implements OnInit {
   async continuarCompra(producto:producto){
     if(producto.cantidad!==0){
     this.dataLocal.guardarProducto(producto);
-    }
-    const toast = await this.toas.create({
+const toast = await this.toas.create({
       message: `${producto.nombre} añadido al carrito.`,
       duration: 2000
     });
     toast.present();
+    }
+    
     this.modalCtrl.dismiss(); 
     
   }

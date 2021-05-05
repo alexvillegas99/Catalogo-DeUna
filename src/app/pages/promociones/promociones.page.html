@@ -1,25 +1,33 @@
 
-<ion-header  translucent>
-  <ion-toolbar color="primary" mode='ios'>
+<ion-header>
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button color="light" routerLink='/' routerLinkActive="router-link-active" ></ion-back-button>
+      <ion-button class="backbtn" routerLink="/" routerDirection="back">
+        <ion-icon name="arrow-back-outline" color="black"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title class="ion-text-capitalize" color="light" >Promociones</ion-title>
+    <ion-title mode='ios'> PROMOCIONES</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content color="dark">
   
-<ion-list *ngFor="let producto of promociones " color="dark">
-  <ion-item color="dark"  (click)="mostrarModal(producto)" style="cursor: pointer;">
-        <ion-img [src]="producto.imagen"></ion-img>
-    <ion-label  class="ion-text-end text-small">
-      <h2>Producto: {{producto.nombre}}</h2>
-      <h3>Descripción: {{producto.descripcion}}</h3>
-      <h3>Precio: <span style=" text-decoration: line-through; color: darkgrey;">  &nbsp;&nbsp;&nbsp;${{producto.precio}}  </span>
-        &nbsp;&nbsp;&nbsp;<span> ${{producto.preciop  }} </span>
-      </h3>
-    </ion-label>
- </ion-item>
-</ion-list>
+<ion-content  class="ion-padding">
+
+<div class="product-slider ion-padding">
+  <ion-row >
+      <ion-col class="ion-text-left" size="6" size-lg="3" size-md="4" size-sm="6"   (click)="mostrarModal(producto)"*ngFor="let producto of promociones" >
+        <img style="border-radius: 10px;height:200px;" src="{{ producto.imagen }}" /> 
+        <p>$<span style=" text-decoration: line-through; color: darkgrey;">  &nbsp;&nbsp;&nbsp;${{producto.precio}}  </span>
+          &nbsp;&nbsp;&nbsp;<span> ${{producto.preciop  }} </span></p>
+        <h6>{{ producto.nombre }}</h6>
+    </ion-col>
+  </ion-row>
+</div>
 </ion-content>
-  
+<ion-footer >
+  <ion-toolbar>
+    <ion-button routerLink="/carrito" routerLinkActive="router-link-active" expand="block">
+      <ion-icon color="light" name="cart-outline" slot="start"> </ion-icon>
+      <ion-label color="light">Productos Seleccionados</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

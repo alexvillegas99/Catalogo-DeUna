@@ -43,7 +43,7 @@ strinProductos ='';
       this.total += producto.total;
       cont++;
     })
-    this.total = Number((this.total+1).toFixed(2));
+    this.total = Number((this.total+2).toFixed(2));
     this.strinProductos += '*Delivery*: $1';
     this.strinProductos +='    *Total Compra*: $' + this.total;
   }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { producto } from '../../interfaces/producto';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { ModalProductoPage } from '../../pages/modal-producto/modal-producto.page';
 
 @Component({
@@ -9,20 +9,25 @@ import { ModalProductoPage } from '../../pages/modal-producto/modal-producto.pag
   styleUrls: ['./productos.component.scss'],
 })
 export class ProductosComponent implements OnInit {
-
-  @Input() productos: producto[]=[];
-  constructor(private modalCtrl:ModalController) { }
+  @Input() productos: producto[] = [];
+  constructor(
+    private modalCtrl: ModalController,
+    private navController: NavController
+  ) {}
 
   ngOnInit() {}
 
-  async mostrarModal(producto:producto) {
+  async mostrarModal(producto: producto) {
     const modal = await this.modalCtrl.create({
       component: ModalProductoPage,
       cssClass: 'my-custom-class',
       componentProps: {
-        'producto': producto
-      }
+        producto: producto,
+      },
     });
     return await modal.present();
+  }
+  navegar(): void {
+    this.navController.navigateForward(['/productos']);
   }
 }

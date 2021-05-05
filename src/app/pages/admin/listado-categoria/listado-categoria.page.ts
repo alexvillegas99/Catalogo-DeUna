@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { producto } from '../../../interfaces/producto';
 import { ModalController, NavController, AlertController } from '@ionic/angular';
 import { CrudProductosService } from '../../../services/crud-productos.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-listado-categoria',
   templateUrl: './listado-categoria.page.html',
   styleUrls: ['./listado-categoria.page.scss'],
 })
-export class ListadoCategoriaPage implements OnInit {
-
+export class ListadoCategoriaPage implements OnInit,OnDestroy {
+  suscriptionCategorias: Subscription = new Subscription();
   Productos:producto[]=[];
   categoria?:string;
   constructor(private modalCtrl:ModalController,
@@ -24,12 +25,15 @@ this.modalCtrl.dismiss();
   }
   ngOnInit() {
     this.categoria=this.ruta.snapshot.params.categoria;
-    this.crudService.getProductos().subscribe(res=>{
+    this.suscriptionCategorias=this.crudService.getProductos().subscribe(res=>{
       this.Productos = res;
     }) ;
     this.Productos.filter(elemento=>{
       elemento.categoria===this.categoria
     })
+  }
+  ngOnDestroy(){
+    this.suscriptionCategorias.unsubscribe();
   }
   
   async editarProducto(id:string){

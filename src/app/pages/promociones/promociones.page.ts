@@ -1,26 +1,31 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { promociones } from '../../interfaces/promociones';
 import { ModalController } from '@ionic/angular';
 import { PromocionPage } from './promocion/promocion.page';
 import { CrudPromocionesService } from '../../services/crud-promociones.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-promociones',
   templateUrl: './promociones.page.html',
   styleUrls: ['./promociones.page.scss'],
 })
-export class PromocionesPage implements OnInit {
+export class PromocionesPage implements OnInit ,OnDestroy{
 
   constructor(private modalCtrl:ModalController,
     private ProductosServices:CrudPromocionesService) { }
-promociones:promociones[]=[]
+promociones:promociones[]=[];
+sucriptionProductos: Subscription = new Subscription();
   ngOnInit() {
-    this.ProductosServices.getProductos().subscribe(res => {
+   this.sucriptionProductos= this.ProductosServices.getProductos().subscribe(res => {
       this.promociones = res;
       this.promociones = this.promociones.filter(prod=>
         prod.estado===true
         )
     });
+  }
+  ngOnDestroy():void{
+    this.sucriptionProductos.unsubscribe();
   }
   async mostrarModal(producto:promociones){
     const modal = await this.modalCtrl.create({

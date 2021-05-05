@@ -1,24 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { promociones } from '../../../interfaces/promociones';
 import { AlertController, NavController } from '@ionic/angular';
 import { CrudPromocionesService } from 'src/app/services/crud-promociones.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-promociones',
   templateUrl: './promociones.page.html',
   styleUrls: ['./promociones.page.scss'],
 })
-export class PromocionesPage implements OnInit {
-
+export class PromocionesPage implements OnInit,OnDestroy {
+  suscriptionPromociones: Subscription = new Subscription(); 
   constructor(private alertCtrl:AlertController,
               private ProductosServices:CrudPromocionesService,
               private navCtrl:NavController) { }
 
   ngOnInit() {
-    this.ProductosServices.getProductos().subscribe(res => {
+   this.suscriptionPromociones=  this.ProductosServices.getProductos().subscribe(res => {
       this.promociones = res;
       
     });
+  }
+  ngOnDestroy(){
+    this.suscriptionPromociones.unsubscribe();
   }
   promociones:promociones[]=[];
   

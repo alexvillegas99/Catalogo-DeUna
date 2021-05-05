@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button class="backbtn" routerLink="/" routerDirection="back">
+        <ion-icon name="arrow-back-outline" color="black"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title mode='ios'>CATEGORIAS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+  <div class="category-slider ion-padding">
+      <ion-row (click)="MostrarModal(categoria)" >
+        <ion-col size="6" size-lg="3" size-md="4" size-sm="6" *ngFor="let categoria of Categorias">
+          <h4>{{ categoria.nombre }}</h4>
+          <img src="{{ categoria.imagen }}" />
+        </ion-col>
+      </ion-row>
+  </div>
+</ion-content>
+<!-- <ion-footer >
+  <ion-toolbar>
+
+
+    <ion-button routerLink="/carrito" routerLinkActive="router-link-active" expand="block">
+      <ion-icon color="light" name="cart-outline" slot="start"> </ion-icon>
+      <ion-label color="light">Productos Seleccionados</ion-label>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
+ -->

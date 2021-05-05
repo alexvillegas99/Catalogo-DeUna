@@ -5,29 +5,29 @@ import { Storage } from '@ionic/storage';
   providedIn: 'root'
 })
 export class DataLocalService {
-  productos:producto[]=[];
+  productosDeUna:producto[]=[];
   constructor(private store:Storage) { }
 async guardarProducto(producto:producto){
-  this.productos = await this.productos.filter(elemento=>
+  this.productosDeUna = await this.productosDeUna.filter(elemento=>
     elemento.nombre !== producto.nombre
   )
-  this.productos.push(producto);
-  this.store.set('productos',this.productos);
+  this.productosDeUna.push(producto);
+  this.store.set('productosDeUna',this.productosDeUna);
 }
 async setear(){
-  this.productos=[];
-  this.store.set('productos',this.productos);
+  this.productosDeUna=[];
+  this.store.set('productosDeUna',this.productosDeUna);
 
 }
 async getProductos(){
-  const productos = await this.store.get('productos');
-  this.productos=productos ||[];
-  return this.productos;
+  const productos = await this.store.get('productosDeUna');
+  this.productosDeUna=productos ||[];
+  return this.productosDeUna;
 }
 async delete(producto:producto){
-  this.productos = await this.productos.filter(elemento=>
+  this.productosDeUna = await this.productosDeUna.filter(elemento=>
     elemento.nombre !== producto.nombre
   )
-  this.store.set('productos',this.productos);
+  this.store.set('productosDeUna',this.productosDeUna);
 }
 }

@@ -14,24 +14,27 @@ export class EditarPage implements OnInit {
   constructor(private modalCtrl: ModalController,
     private dataLocal: DataLocalService) { }
 
-
+cantidad;
+total:number;
   ngOnInit() {
-    this.producto.total = this.producto.cantidad* this.producto.precio;
+    this.total = Number((this.producto.cantidad* this.producto.precio).toFixed(2));
+    this.cantidad=this.producto.cantidad;
   }
   async calcular(signo) {
-    let valor = eval(this.producto.cantidad + signo + 1)
+    let valor = eval(this.cantidad + signo + 1)
     if (valor === 0) {
-      this.producto.cantidad = 1;
+      this.cantidad = 1;
     } else {
-      this.producto.cantidad = valor;
+      this.cantidad = valor;
     }
-    this.producto.total = this.producto.cantidad * this.producto.precio;
+    this.total = Number((this.cantidad * this.producto.precio).toFixed(2));
   }
   salir() {
     this.modalCtrl.dismiss();
   }
   continuarCompra(producto) {
-    this.dataLocal.guardarProducto(producto);
+    this.producto.cantidad=this.cantidad;
+   this.producto.total=this.total;
     this.modalCtrl.dismiss();
   }
 

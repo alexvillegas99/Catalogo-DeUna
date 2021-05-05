@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , OnDestroy} from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
@@ -9,8 +9,8 @@ import { EditarPage } from '../editar/editar.page';
   templateUrl: './carrito.page.html',
   styleUrls: ['./carrito.page.scss'],
 })
-export class CarritoPage implements OnInit {
-
+export class CarritoPage implements OnInit,OnDestroy {
+setInterval:any;
   productos: producto[] = [];
   finalizar=false;
   constructor(private modalCtrl: ModalController,
@@ -19,7 +19,7 @@ export class CarritoPage implements OnInit {
   total = 0;
   ngOnInit() {
     this.cargarProductos();
-    setInterval(() => {
+  this.setInterval =  setInterval(() => {
   this.calculaTotal();
 }, 1000);
 
@@ -29,7 +29,10 @@ export class CarritoPage implements OnInit {
     this.productos.forEach(producto => {
       total += Number(producto.total.toFixed(2));
     })
-    this.total=Number((total+1).toFixed(2));
+    this.total=Number((total+2).toFixed(2));
+  }
+ngOnDestroy():void{
+clearInterval(this.setInterval);
   }
   async cargarProductos() {
     let total = 0;

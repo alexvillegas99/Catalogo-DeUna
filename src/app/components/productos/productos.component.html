@@ -1,10 +1,15 @@
-<ion-list *ngFor="let producto of productos " color="dark">
-  <ion-item color="dark"  (click)="mostrarModal(producto)" style="cursor: pointer;">
-        <ion-img [src]="producto.imagen"></ion-img>
-    <ion-label  class="ion-text-end text-small">
-      <h2>Producto: {{producto.nombre}}</h2>
-      <h3>Descripción: {{producto.descripcion}}</h3>
-      <h3>Precio: ${{producto.precio}}</h3>
-    </ion-label>
- </ion-item>
-</ion-list>
+<div class="title ion-padding">
+  <h2>Productos</h2>
+  <p (click)="navegar()" >Mirar más</p>
+</div>
+<div class="product-slider ion-padding-start">
+  <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
+    <ion-slide  (click)="mostrarModal(producto)"*ngFor="let producto of productos ">
+      <ion-col class="ion-text-left">
+        <img src="{{ producto.imagen }}" />
+        <p>${{producto.precio}}</p>
+        <h6>{{ producto.nombre }}</h6>
+      </ion-col>
+    </ion-slide>
+  </ion-slides>
+</div>
