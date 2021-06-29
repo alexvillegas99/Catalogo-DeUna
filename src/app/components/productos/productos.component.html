@@ -2,7 +2,10 @@
   <h2>Productos</h2>
   <p (click)="navegar()" >Mirar más</p>
 </div>
-<div class="product-slider ion-padding-start">
+<div *ngIf="productos.length===0" class="contenedor-spinner">
+  <app-spinner ></app-spinner>
+</div>
+<div *ngIf="productos.length>0" class="product-slider ion-padding-start">
   <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
     <ion-slide  (click)="mostrarModal(producto)"*ngFor="let producto of productos ">
       <ion-col class="ion-text-left">

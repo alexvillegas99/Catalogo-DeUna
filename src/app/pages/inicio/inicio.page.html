@@ -1,8 +1,13 @@
-<!-- <ion-header>
-  <ion-toolbar text-center>
-    <ion-title class="ion-text-capitalize" style="color: black; text-align: center;" >SUPERMARKET ON LINE</ion-title>
+<ion-header [translucent]="true"  >
+  <ion-toolbar  color="dark">
+    <ion-title style="text-align: center;">
+      <h4>Delivery De Una</h4>
+      <h3 style="font-weight: bold;">Ambato, Ecuador</h3>
+    </ion-title>
+
+
   </ion-toolbar>
-</ion-header> -->
+</ion-header>
 <ion-content>
   <div class="search ion-padding">
     <ion-searchbar placeholder="Buscar..." debounce="700" color="light" inputmode="text" (ionChange)="buscar($event)">
@@ -11,7 +16,7 @@
   <app-categorias *ngIf="!busqueda && ( productos !==undefined)" [Productos]="productos" [Categorias]="Categorias"></app-categorias>
   <app-promociones *ngIf="!busqueda && ( productos !==undefined)" [productos]="promociones"></app-promociones>
   <app-productos *ngIf="!busqueda && (productos !==undefined)" [productos]="productos"></app-productos>
-  <app-productos *ngIf="busqueda && productosFiltrados.length>1" [productos]="productosFiltrados"></app-productos>
+  <app-productos *ngIf="busqueda && productosFiltrados.length>0" [productos]="productosFiltrados"></app-productos>
   <div class="contenedor" *ngIf="busqueda && productosFiltrados.length===0 && ( productos !==undefined)">
     <img src="assets/noencontrado.svg" />
     <h1>No se encontraron coincidencias</h1>
@@ -23,7 +28,7 @@
 </ion-content>
 <ion-footer *ngIf="!busqueda">
   <ion-toolbar>
-    <ion-button routerLink="/carrito" routerLinkActive="router-link-active" expand="block">
+    <ion-button routerLink="/carrito" routerLinkActive="router-link-active" color="medium" expand="block">
       <ion-icon color="light" name="cart-outline" slot="start"> </ion-icon>
       <ion-label color="light">Productos Seleccionados</ion-label>
     </ion-button>

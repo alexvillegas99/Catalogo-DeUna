@@ -13,7 +13,9 @@ export class PromocionesComponent implements OnInit {
   constructor(private modalCtrl:ModalController,
               private navController:NavController) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
   async mostrarModal(producto:promociones){
     const modal = await this.modalCtrl.create({
       component: PromocionPage,

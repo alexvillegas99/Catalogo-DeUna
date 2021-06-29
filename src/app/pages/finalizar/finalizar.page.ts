@@ -44,7 +44,7 @@ strinProductos ='';
       cont++;
     })
     this.total = Number((this.total+2).toFixed(2));
-    this.strinProductos += '*Delivery*: $1';
+    this.strinProductos += '*Delivery*: $2';
     this.strinProductos +='    *Total Compra*: $' + this.total;
   }
 async enviar(){
@@ -63,7 +63,7 @@ async enviar(){
   let url = 'https://wa.me/' + this.numero + '?text=' + texto;
   const browser = this.iab.create(url,'_system');
   this.dataLocal.setear();
-  this.navCtrl.navigateForward('/inicio')
+  this.navCtrl.navigateRoot('/')
 }else{
   const alert = await this.alertCtrl.create({
     cssClass: 'my-custom-class',

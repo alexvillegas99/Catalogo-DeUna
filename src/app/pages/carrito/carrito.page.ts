@@ -3,6 +3,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
 import { EditarPage } from '../editar/editar.page';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-carrito',
@@ -15,13 +16,10 @@ setInterval:any;
   finalizar=false;
   constructor(private modalCtrl: ModalController,
     private dataLocal: DataLocalService,
-    private navCtrl: NavController) { }
+    private toastr:ToastrService) { }
   total = 0;
   ngOnInit() {
     this.cargarProductos();
-  this.setInterval =  setInterval(() => {
-  this.calculaTotal();
-}, 1000);
 
   }
   async calculaTotal() {
@@ -46,9 +44,19 @@ clearInterval(this.setInterval);
     }else{
       this.finalizar=true;
     }
+    this.calculaTotal();
   }
 
-
+  calcular(i:number,numero:number){
+    let total:number;
+    if(this.productos[i].cantidad+numero>=1){
+    this.productos[i].cantidad=this.productos[i].cantidad+numero;
+    total = this.productos[i].cantidad*this.productos[i].precio;
+    this.productos[i].total = Number(total.toFixed(2));
+    this.dataLocal.guardarProducto(this.productos[i]);
+    this.calculaTotal();
+  }
+  }
   async editar(producto: producto) {
     const modal = await this.modalCtrl.create({
       component: EditarPage,
@@ -58,8 +66,9 @@ clearInterval(this.setInterval);
     });
     return await modal.present();
   }
-  async eliminar(producto: producto) {
-    await this.dataLocal.delete(producto);
+  async eliminar(index: number) {
+    this.toastr.success(`${this.productos[index].nombre} eliminado correctamente de la lista.`,'Eliminado',)
+    await this.dataLocal.delete(this.productos[index]);
     this.cargarProductos();
   }
 

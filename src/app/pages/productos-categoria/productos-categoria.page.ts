@@ -32,6 +32,13 @@ export class ProductosCategoriaPage implements OnInit, OnDestroy {
       this.Productos = this.Productos.filter(prod =>
         prod.estado === true,
       )
+      this.Productos.sort(function (a, b){
+        if ( a.nombre < b.nombre )
+        return -1;
+        if ( a.nombre > b.nombre )
+          return 1;
+        return 0;
+      })
     });
     this.Productos.filter(elemento => {
       elemento.categoria === this.categoria

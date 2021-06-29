@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, NavController, ToastController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
+import { ToastrService } from 'ngx-toastr';
 import { producto } from '../../interfaces/producto';
 import { DataLocalService } from '../../services/data-local.service';
-import { CarritoPage } from '../carrito/carrito.page';
 
 @Component({
   selector: 'app-modal-producto',
@@ -17,18 +17,17 @@ export class ModalProductoPage implements OnInit {
   constructor(private navCtrl: NavController,
     private modalCtrl: ModalController,
     private dataLocal: DataLocalService,
-    private toas:ToastController) { }
+    private toas:ToastrService) { }
  
   ngOnInit() {
-    this.producto.total = (this.producto.cantidad=0) * this.producto.precio;
-    
-    
+    this.producto.cantidad=1;
+    this.producto.total = (this.producto.cantidad) * this.producto.precio;
   }
   calcular(signo) {
     let total:number;
     let valor = eval( this.producto.cantidad+ signo + 1)
-     if (valor <= 0) {
-      this.producto.cantidad = 0;
+     if (valor <= 1) {
+      this.producto.cantidad = 1;
     } else {
       this.producto.cantidad = valor;
     }
@@ -39,15 +38,8 @@ export class ModalProductoPage implements OnInit {
     this.modalCtrl.dismiss();
   }
   async continuarCompra(producto:producto){
-    if(producto.cantidad!==0){
     this.dataLocal.guardarProducto(producto);
-const toast = await this.toas.create({
-      message: `${producto.nombre} añadido al carrito.`,
-      duration: 2000
-    });
-    toast.present();
-    }
-    
+this.toas.success(`${producto.nombre} añadido correctamente al carrito.`,'Añadido');
     this.modalCtrl.dismiss(); 
     
   }

@@ -22,6 +22,13 @@ sucriptionProductos: Subscription = new Subscription();
       this.promociones = this.promociones.filter(prod=>
         prod.estado===true
         )
+        this.promociones.sort(function (a, b){
+          if ( a.nombre < b.nombre )
+          return -1;
+          if ( a.nombre > b.nombre )
+            return 1;
+          return 0;
+        })
     });
   }
   ngOnDestroy():void{

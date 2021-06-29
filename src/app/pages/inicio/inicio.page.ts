@@ -39,6 +39,14 @@ export class InicioPage implements OnInit, OnDestroy{
       this.productos = this.productos.filter(prod=>
       prod.estado===true
       )
+      this.productos.sort(function (a, b){
+        if ( a.nombre < b.nombre )
+        return -1;
+        if ( a.nombre > b.nombre )
+          return 1;
+        return 0;
+      })
+      
     });
     this.cargarCategorias();
     this.suscripcionPromociones= this.PromosionesSercices.getProductos().subscribe(res => {
@@ -46,6 +54,13 @@ export class InicioPage implements OnInit, OnDestroy{
       this.promociones = this.promociones.filter(prod=>
         prod.estado===true
         )
+        this.promociones.sort(function (a, b){
+          if ( a.nombre < b.nombre )
+          return -1;
+          if ( a.nombre > b.nombre )
+            return 1;
+          return 0;
+        })
     });
   }
     ngOnDestroy():void{
@@ -56,6 +71,13 @@ export class InicioPage implements OnInit, OnDestroy{
   async cargarCategorias() {
   this.sucriptionCategorias=  await this.CategoriasService.getCategorias().subscribe(res => {
       this.Categorias = res;
+      this.Categorias.sort(function (a, b){
+        if ( a.nombre < b.nombre )
+        return -1;
+        if ( a.nombre > b.nombre )
+          return 1;
+        return 0;
+      })
     });
 
   }

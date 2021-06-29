@@ -13,10 +13,11 @@
 
   
   <div class="category-slider ion-padding">
-      <ion-row (click)="MostrarModal(categoria)" >
-        <ion-col size="6" size-lg="3" size-md="4" size-sm="6" *ngFor="let categoria of Categorias">
-          <h4>{{ categoria.nombre }}</h4>
+      <ion-row  >
+        <ion-col size="6" size-lg="3" size-md="4" size-sm="6" *ngFor="let categoria of Categorias" (click)="MostrarModal(categoria)">
+         
           <img src="{{ categoria.imagen }}" />
+          <h4>{{ categoria.nombre }}</h4>
         </ion-col>
       </ion-row>
   </div>

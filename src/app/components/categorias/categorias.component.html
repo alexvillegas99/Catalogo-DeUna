@@ -3,13 +3,15 @@
     <h2>Categorias</h2>
     <p (click)="navegar()">Mirar más</p>
   </div>
-  
-  <div class="category-slider ion-padding-start">
+  <div *ngIf="Categorias.length===0" class="contenedor-spinner">
+    <app-spinner ></app-spinner>
+  </div>
+  <div *ngIf="Categorias.length>0" class="category-slider ion-padding-start">
     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
       <ion-slide (click)="MostrarModal(categoria)" *ngFor="let categoria of Categorias">
         <ion-col>
-          <h4>{{ categoria.nombre }}</h4>
           <img src="{{ categoria.imagen }}" />
+          <h4>{{ categoria.nombre }}</h4>
         </ion-col>
       </ion-slide>
     </ion-slides>

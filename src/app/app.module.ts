@@ -18,6 +18,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PipesModule } from './pipes/pipes.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,6 +31,8 @@ import { PipesModule } from './pipes/pipes.module';
     ComponentsModule,
     PipesModule,
     IonicStorageModule.forRoot(),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [InAppBrowser,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

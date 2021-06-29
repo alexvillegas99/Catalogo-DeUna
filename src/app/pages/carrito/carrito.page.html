@@ -10,31 +10,51 @@
 </ion-header>
 
 <ion-content   mode='ios' color="dark"> 
-  <ion-list *ngFor="let producto of productos" color="dark">
-    <ion-item color="dark">
-          <ion-img [src]="producto.imagen"></ion-img>
-      <ion-label  class="ion-text-end text-small">
-        <h2>Producto: {{producto.nombre}}</h2>
-        <h3>Precio: ${{producto.precio}}</h3>
-        <h3>Cantidad: {{producto.cantidad}}</h3>
-          <h3>Total: ${{producto.total}}</h3>
-          <ion-button (click)="editar(producto)" slot="end" color="warning">Editar</ion-button>
-          <ion-button (click)="eliminar(producto)" color="danger" slot="end">Eliminar</ion-button>
-      </ion-label>
-   </ion-item>
-  </ion-list>
+  <div class="cart-items">
+    <ion-card mode="ios" *ngFor="let producto of productos ; let i=index">
+      <ion-card-content>
+        <div class="item-img">
+          <img src="{{producto.imagen}}" />
+        </div>
+       
+        <div class="item-info">
+          <p>Nombre: {{producto.nombre}}</p> 
+          
+          <p>Descripción: {{producto.descripcion}}</p>
+          <p>Precio: ${{producto.precio}}</p>
+
+          <div class="qty-selector" style="margin-bottom: 10px;">
+            <ion-button fill="clear" (click)="calcular(i, -1)">-</ion-button>
+            <ion-label>{{producto.cantidad}}</ion-label>
+            <ion-button fill="clear" (click)="calcular(i, +1)">+</ion-button>
+            <ion-button style="margin-left: 25px;" (click)="eliminar(i)" expand="block" fill="clear" slot="icon-only">
+              <ion-icon slot="end" name="trash" color="danger"></ion-icon>
+            </ion-button>
+           
+          </div>
+          <ion-label style="margin-top: 10px;"> <p> Total: ${{producto.total}}</p></ion-label>
+        
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
   <ion-item color="dark"  *ngIf="finalizar">
     <ion-label class="ion-text-end text-small"><h2>Delivery: $2</h2></ion-label>
   </ion-item>
   <ion-item color="dark"  *ngIf="finalizar">
-    <ion-label class="ion-text-end text-small"><h3>Total: ${{total}}</h3></ion-label>
+    <ion-label class="ion-text-end text-small"><h2>Total: ${{total}}</h2></ion-label>
   </ion-item>
   <ion-label style="text-align: center;" color="danger"><h1 *ngIf="!finalizar">No hay productos seleccionados</h1></ion-label>
 
-<ion-button routerLink='/' routerLinkActive="router-link-active" color="warning" expand="block" >
+<ion-button routerLink='/' routerLinkActive="router-link-active" color="medium" expand="block" >
   Agregar más productos
-</ion-button>
-<ion-button routerLink='/finalizar' *ngIf="finalizar" color="success"  expand="block" >
-  Finalizar Compra
+
 </ion-button>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+  <ion-button routerLink='/finalizar' *ngIf="finalizar" color="success"  expand="block" >
+    Finalizar Compra
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>

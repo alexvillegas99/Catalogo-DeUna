@@ -8,7 +8,7 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
+ @import '~ngx-toastr/toastr';
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -59,3 +59,9 @@ ion-alert {
      --background-color: #92949c;
       
   }
+  .contenedor-spinner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

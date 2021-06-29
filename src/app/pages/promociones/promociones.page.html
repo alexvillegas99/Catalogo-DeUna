@@ -15,7 +15,7 @@
 <div class="product-slider ion-padding">
   <ion-row >
       <ion-col class="ion-text-left" size="6" size-lg="3" size-md="4" size-sm="6"   (click)="mostrarModal(producto)"*ngFor="let producto of promociones" >
-        <img style="border-radius: 10px;height:200px;" src="{{ producto.imagen }}" /> 
+        <img style="border-radius: 10px;" src="{{ producto.imagen }}" /> 
         <p>$<span style=" text-decoration: line-through; color: darkgrey;">  &nbsp;&nbsp;&nbsp;${{producto.precio}}  </span>
           &nbsp;&nbsp;&nbsp;<span> ${{producto.preciop  }} </span></p>
         <h6>{{ producto.nombre }}</h6>
